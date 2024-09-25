@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Zcr Generators" %></title>
+    <title><%= content_for(:title) || "Zero Config Rails - Generators" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
@@ -10,12 +10,25 @@
     <%= yield :head %>
 
     <link rel="manifest" href="/manifest.json">
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <!--<link rel="icon" href="/icon.svg" type="image/svg+xml">-->
     <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+
+    <meta name="keywords" content="rails generator, automated gem installer, gem installer, rails scaffold generator, rails model generator, rails controller generator, rails view generator">
+    <meta name="title" content="Zero Config Rails - Generators">
+    <meta name="description" content="Configure any Ruby gem inside your project with a single command.">
+
+    <meta name="twitter:title" content="Zero Config Rails - Generators">
+    <meta name="twitter:description" content="Configure any Ruby gem inside your project with a single command.">
+    <meta name="twitter:image" content="<%= image_url('/meta/cover.png') %>">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta property="og:title" content="Zero Config Rails - Generators">
+    <meta property="og:image" content="<%= image_url('/meta/cover.png') %>">
+    <meta property="og:description" content="Configure any Ruby gem inside your project with a single command.">
   </head>
 
   <body class="min-h-screen flex flex-col">
