@@ -81,3 +81,5 @@ gem "avo", "~> 3.12"
 gem "bullet", "~> 7.2", group: :development
 
 gem "overcommit", "~> 0.64.0", groups: [ :development, :test ]
+
+gem "tailwindcss-rails", "~> 2.7"
