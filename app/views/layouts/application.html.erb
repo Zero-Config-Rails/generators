@@ -18,9 +18,26 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
-      <%= yield %>
+  <body class="min-h-screen flex flex-col">
+    <!-- Main content area -->
+    <main class="flex-grow p-4 md:p-8">
+      <div class="container mx-auto">
+        <%= yield %>
+      </div>
     </main>
+
+    <footer class="bg-gray-800 text-white p-4">
+      <div class="container mx-auto text-center">
+        <div>
+          <p>
+            With <span class="text-red-500">♥️</span> from <a href="https://zeroconfigrails.com" target="_blank" class="text-secondary underline underline-offset-4">Zero Config Rails</a>
+          </p>
+        </div>
+
+        <div class="mt-2 text-sm">
+          Powered by <a href="https://github.com/abhaynikam/boring_generators" target="_blank" class="hover:underline underline-offset-4">Boring Generators</a>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

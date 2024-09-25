@@ -24,7 +24,9 @@ Rails.application.configure do
     config.action_controller.enable_fragment_cache_logging = true
 
     config.cache_store = :memory_store
-    config.public_file_server.headers = { "Cache-Control" => "public, max-age=#{2.days.to_i}" }
+    config.public_file_server.headers = {
+      "Cache-Control" => "public, max-age=#{2.days.to_i}"
+    }
   else
     config.action_controller.perform_caching = false
 
@@ -82,4 +84,8 @@ Rails.application.configure do
   # Preview email in the browser instead of sending it
   config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
+
+  # whitelist ngrok domains.
+  config.hosts << /[a-z0-9-]+\.ngrok\.io/
+  config.hosts << /[a-z0-9-]+\.ngrok-free\.app/
 end
