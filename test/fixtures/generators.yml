@@ -1,0 +1,38 @@
+# == Schema Information
+#
+# Table name: generators
+#
+#  id                 :bigint           not null, primary key
+#  description        :text
+#  git_url            :string
+#  invocation_command :string
+#  is_active          :boolean          default(TRUE)
+#  logo_url           :string
+#  name               :string
+#  short_description  :string
+#  user_guide_urls    :string           default([]), is an Array
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#
+# Indexes
+#
+#  index_generators_on_name  (name) UNIQUE
+#
+
+one:
+  name: MyString
+  short_description: MyString
+  description: MyText
+  git_url: MyString
+  user_guide_url: MyString
+  logo_url: MyString
+  invocation_command: MyString
+
+two:
+  name: MyString
+  short_description: MyString
+  description: MyText
+  git_url: MyString
+  user_guide_url: MyString
+  logo_url: MyString
+  invocation_command: MyString
