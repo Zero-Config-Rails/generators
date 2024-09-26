@@ -1,0 +1,18 @@
+# == Schema Information
+#
+# Table name: boolean_fields
+#
+#  id            :bigint           not null, primary key
+#  default_value :boolean
+#  display_type  :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+
+one:
+  default_value: false
+  display_type: MyString
+
+two:
+  default_value: false
+  display_type: MyString
