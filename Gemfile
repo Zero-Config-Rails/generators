@@ -73,7 +73,7 @@ end
 
 gem "boring_generators", "~> 0.14.0", group: :development, github: "Zero-Config-Rails/boring_generators", branch: "zcr-main"
 
-gem "sentry-ruby", "~> 5.19"
+gem "sentry-ruby", "~> 5.20"
 gem "sentry-rails", "~> 5.19"
 
 gem "avo", "~> 3.12"
