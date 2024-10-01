@@ -76,7 +76,7 @@ gem "boring_generators", "~> 0.14.0", group: :development, github: "Zero-Config-
 gem "sentry-ruby", "~> 5.19"
 gem "sentry-rails", "~> 5.19"
 
-gem "avo", "~> 3.12"
+gem "avo", "~> 3.13"
 
 gem "bullet", "~> 7.2", group: :development
 
