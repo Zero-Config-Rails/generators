@@ -88,7 +88,7 @@ GEM
       activerecord (>= 3.2, < 8.0)
       rake (>= 10.4, < 14.0)
     ast (2.4.2)
-    avo (3.13.0)
+    avo (3.13.1)
       actionview (>= 6.1)
       active_link_to
       activerecord (>= 6.1)
@@ -344,7 +344,7 @@ GEM
     unicode-display_width (2.6.0)
     uniform_notifier (1.16.0)
     useragent (0.16.10)
-    view_component (3.15.1)
+    view_component (3.16.0)
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
