@@ -1,0 +1,7 @@
+<% default_value = field.default_value%>
+
+<select class="select select-bordered">
+  <% field.options.each do |value, text| %>
+    <option <%=  "selected" if value == default_value %> value="<%= value %>"><%= text || value.humanize.titleize %></option>
+  <% end %>
+</select>

@@ -1,6 +1,7 @@
 class CreateGenerators < ActiveRecord::Migration[7.2]
   def change
     create_table :generators do |t|
+      t.string :identifier, null: false
       t.string :name
       t.string :short_description
       t.text :description
@@ -12,6 +13,7 @@ class CreateGenerators < ActiveRecord::Migration[7.2]
 
       t.timestamps
 
+      t.index :identifier, unique: true
       t.index :name, unique: true
     end
   end

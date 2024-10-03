@@ -1,0 +1,59 @@
+<div class="grid gap-4">
+  <div class="flex items-center">
+    <%= generator_logo(@generator) %>
+    <h2 class="font-bold text-3xl">Install <%= generator_title(@generator) %></h2>
+  </div>
+
+  <div role="alert" class="alert">
+    <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    class="stroke-info h-6 w-6 shrink-0">
+      <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+    </svg>
+
+    <p>Don't forget to install the <span class="font-semibold">zen</span> gem first with <code class="text-secondary">gem install zcr_zen</code></p>
+
+    <!--TODO: implement the functionality of Don't show again so that users are not show this whole alert container for installing the zen gem-->
+    <!--<div>
+      <button class="btn btn-sm">Don't Show Again</button>
+    </div>-->
+  </div>
+
+  <div class="mockup-code">
+    <pre><code>zen add <%= @generator.invocation_command %> <%= configuration_options(@generator.configurations) %></code></pre>
+  </div>
+
+  <div class="grid gap-4 md:gap-8 md:grid-cols-2">
+    <% @generator.configurations.each do |configuration|%>
+      <label class="form-control w-full">
+        <div class="label">
+          <span class="label-text"><%= configuration_title(configuration) %></span>
+
+          <% if configuration.description.present? %>
+            <div class="tooltip tooltip-left" data-tip="<%= configuration.description %>">
+              <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              class="stroke-neutral-content h-6 w-6 shrink-0">
+                <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+          <% end %>
+        </div>
+
+        <%= render "configurations/fieldables/#{configuration.fieldable_name}", field: configuration.fieldable %>
+      </label>
+    <% end %>
+  </div>
+</div>
