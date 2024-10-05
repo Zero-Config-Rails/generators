@@ -140,6 +140,8 @@ GEM
     erubi (1.13.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    heroicon (1.0.0)
+      rails (>= 5.2)
     i18n (1.14.6)
       concurrent-ruby (~> 1.0)
     iniparse (1.5.0)
@@ -372,18 +374,19 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
-  avo (~> 3.13)
+  avo
   bootsnap
   boring_generators (~> 0.14.0)!
   brakeman
-  bullet (~> 7.2)
+  bullet
   bundler-audit
   capybara
   debug
+  heroicon
   jbuilder
   jsbundling-rails
   letter_opener
-  overcommit (~> 0.64.0)
+  overcommit
   pg (~> 1.1)
   puma (>= 5.0)
   rack-mini-profiler
@@ -391,11 +394,11 @@ DEPENDENCIES
   rubocop-rails-omakase
   ruby_audit
   selenium-webdriver
-  sentry-rails (~> 5.20)
-  sentry-ruby (~> 5.19)
+  sentry-rails
+  sentry-ruby
   sprockets-rails
   stimulus-rails
-  tailwindcss-rails (~> 2.7)
+  tailwindcss-rails
   turbo-rails
   tzinfo-data
   web-console

@@ -4,5 +4,8 @@
 
 import { application } from "./application"
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
+import GeneratorCommandController from "./generator_command_controller"
+application.register("generator-command", GeneratorCommandController)
+
+import ClipboardController from "./clipboard_controller"
+application.register("clipboard", ClipboardController)

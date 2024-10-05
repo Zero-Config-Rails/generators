@@ -44,6 +44,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_25_160458) do
   end
 
   create_table "generators", force: :cascade do |t|
+    t.string "identifier", null: false
     t.string "name"
     t.string "short_description"
     t.text "description"
@@ -54,6 +55,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_25_160458) do
     t.boolean "is_active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["identifier"], name: "index_generators_on_identifier", unique: true
     t.index ["name"], name: "index_generators_on_name", unique: true
   end
 

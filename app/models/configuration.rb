@@ -36,4 +36,6 @@ class Configuration < ApplicationRecord
               scope: :generator_id
             }
   validates :fieldable, presence: true
+
+  delegate :default_value, to: :fieldable
 end

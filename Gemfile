@@ -26,7 +26,7 @@ gem "jbuilder"
 # gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[ windows jruby ]
+gem "tzinfo-data", platforms: %i[windows jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
@@ -36,13 +36,15 @@ gem "bootsnap", require: false
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
+  gem "debug", platforms: %i[mri windows], require: "debug/prelude"
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  gem "overcommit"
 end
 
 group :development do
@@ -52,17 +54,17 @@ group :development do
   # Profiler for your Rails application
   gem "rack-mini-profiler", require: false
 
-
   # Patch-level verification for Bundler. https://github.com/rubysec/bundler-audit
   gem "bundler-audit", require: false
   # vulnerability checker for Ruby itself. https://github.com/civisanalytics/ruby_audit
   gem "ruby_audit", require: false
 
-
   gem "annotate"
 
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+
+  gem "bullet"
 end
 
 group :test do
@@ -71,15 +73,16 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "boring_generators", "~> 0.14.0", group: :development, github: "Zero-Config-Rails/boring_generators", branch: "zcr-main"
+gem "boring_generators",
+    "~> 0.14.0",
+    group: :development,
+    github: "Zero-Config-Rails/boring_generators",
+    branch: "zcr-main"
 
-gem "sentry-ruby", "~> 5.19"
-gem "sentry-rails", "~> 5.20"
+gem "sentry-ruby"
+gem "sentry-rails"
 
-gem "avo", "~> 3.13"
+gem "avo"
 
-gem "bullet", "~> 7.2", group: :development
-
-gem "overcommit", "~> 0.64.0", groups: [ :development, :test ]
-
-gem "tailwindcss-rails", "~> 2.7"
+gem "tailwindcss-rails"
+gem "heroicon"

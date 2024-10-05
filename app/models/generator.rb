@@ -5,6 +5,7 @@
 #  id                 :bigint           not null, primary key
 #  description        :text
 #  git_url            :string
+#  identifier         :string           not null
 #  invocation_command :string
 #  is_active          :boolean          default(TRUE)
 #  logo_url           :string
@@ -16,10 +17,13 @@
 #
 # Indexes
 #
-#  index_generators_on_name  (name) UNIQUE
+#  index_generators_on_identifier  (identifier) UNIQUE
+#  index_generators_on_name        (name) UNIQUE
 #
 class Generator < ApplicationRecord
-  validates :name, presence: true, uniqueness: true
+  validates :identifier, presence: true, uniqueness: true
+  validates :name, uniqueness: true, allow_nil: true
+  validates :invocation_command, presence: true, uniqueness: true
   validates :user_guide_urls,
             presence: true,
             if: -> { user_guide_urls.length.positive? }

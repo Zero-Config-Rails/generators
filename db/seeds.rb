@@ -3,11 +3,12 @@
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 
 Generator.create!(
+  identifier: "gitlab_ci",
   name: "Gitlab CI",
   description: "Setup Gitlab CI",
   user_guide_urls: %w[
     https://blog.zeroconfigrails.com/configure-minitest-with-gitlab-ci-and-rails
-    https://prabinpoudel.com.np/articles/setup-and-run-rspec-tests-with-gitlab-ci
+    https://blog.zeroconfigrails.com/setup-and-run-rspec-tests-with-gitlab-ci
   ],
   invocation_command: "ci:gitlab_ci",
   configurations_attributes: [

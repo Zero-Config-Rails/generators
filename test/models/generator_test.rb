@@ -5,6 +5,7 @@
 #  id                 :bigint           not null, primary key
 #  description        :text
 #  git_url            :string
+#  identifier         :string           not null
 #  invocation_command :string
 #  is_active          :boolean          default(TRUE)
 #  logo_url           :string
@@ -16,7 +17,8 @@
 #
 # Indexes
 #
-#  index_generators_on_name  (name) UNIQUE
+#  index_generators_on_identifier  (identifier) UNIQUE
+#  index_generators_on_name        (name) UNIQUE
 #
 require "test_helper"
 
