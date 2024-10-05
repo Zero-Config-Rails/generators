@@ -31,7 +31,7 @@
   animation: animated-gradient 6s ease infinite alternate;
 }
 
-.mockup-code pre:before {
+.mockup-code .generator-command pre:before {
   margin-right: 0;
 }
 

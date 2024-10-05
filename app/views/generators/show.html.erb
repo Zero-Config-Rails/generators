@@ -17,7 +17,7 @@
       d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
     </svg>
 
-    <p>Don't forget to install the <span class="font-semibold">zen</span> gem first with <code class="text-secondary">gem install zcr_zen</code></p>
+    <p>Don't forget to install the <span class="font-semibold">zen</span> gem first with <code class="text-secondary">gem install zcr-zen</code></p>
 
     <!--TODO: implement the functionality of Don't show again so that users are not show this whole alert container for installing the zen gem-->
     <!--<div>
@@ -34,9 +34,9 @@
       <%= heroicon "check", options: { class: "swap-on text-success" } %>
     </label>
 
-    <div class="max-h-16 overflow-y-auto">
+    <div class="generator-command max-h-16 overflow-y-auto">
       <div class="pb-6">
-        <pre class="whitespace-pre-wrap break-all mx-6 p-0 before:mr-0"><code data-clipboard-target="source" >zen add <%= @generator.invocation_command %><%= safe_join(configuration_options(@generator.configurations)) %></code></pre>
+        <pre class="whitespace-pre-wrap break-all mx-6 p-0 before:mr-0"><code data-clipboard-target="source">zen add <%= @generator.invocation_command %><%= safe_join(configuration_options(@generator.configurations)) %></code></pre>
       </div>
     </div>
   </div>
