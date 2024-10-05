@@ -30,3 +30,15 @@
   -moz-animation: animated-gradient 6s ease infinite alternate;
   animation: animated-gradient 6s ease infinite alternate;
 }
+
+.mockup-code pre:before {
+  margin-right: 0;
+}
+
+.mockup-code pre {
+  padding-right: 0;
+}
+
+.toggle {
+  box-shadow: var(--handleoffsetcalculator) 0 0 2px var(--tglbg) inset, 0 0 0 2px var(--tglbg) inset, var(--togglehandleborder) !important;
+}

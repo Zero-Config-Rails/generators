@@ -1,1 +1,25 @@
-<input type="checkbox" class="toggle" <%= "checked" if field.default_value %> />
+<% classes = class_names("toggle", { checked: field.default_value }) %>
+
+<div class="form-control w-full">
+  <div class="label">
+    <span class="label-text"><%= configuration_title(configuration) %></span>
+
+    <% if configuration.description.present? %>
+      <div class="tooltip tooltip-left" data-tip="<%= configuration.description %>">
+        <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              class="stroke-neutral-content h-6 w-6 shrink-0">
+          <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+      </div>
+    <% end %>
+  </div>
+
+  <input type="checkbox" class="<%= classes %>" data-generator-command-configuration-id-value="<%= configuration.configuration_key %>" data-action="click->generator-command#update" />
+</div>
