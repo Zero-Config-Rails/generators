@@ -33,4 +33,12 @@ class Generator < ApplicationRecord
   has_many :configurations, dependent: :destroy
 
   accepts_nested_attributes_for :configurations, allow_destroy: :true
+
+  scope :active, -> { where(is_active: true) }
+
+  def self.search_dropdown
+    active.map do |generator|
+      [generator.identifier, generator.name || generator.identifier.humanize.titleize]
+    end
+  end
 end

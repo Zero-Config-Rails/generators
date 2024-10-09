@@ -65,6 +65,8 @@ group :development do
   gem "web-console"
 
   gem "bullet"
+
+  gem "syntax_tree"
 end
 
 group :test do
