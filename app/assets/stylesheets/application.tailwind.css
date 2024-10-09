@@ -35,7 +35,7 @@
   margin-right: 0;
 }
 
-.mockup-code pre {
+.mockup-code .generator-command pre {
   padding-right: 0;
 }
 
