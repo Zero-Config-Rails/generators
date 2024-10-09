@@ -2,6 +2,18 @@
   <h1 class="text-primary text-2xl md:text-4xl font-bold">Single command to add any Ruby gem</h1>
 </div>
 
+<div class="flex justify-center items-center my-6 md:mb-16" data-controller="search">
+  <label class="form-control w-full max-w-xs">
+    <select class="select select-secondary select-bordered" data-action="change->search#redirect">
+      <option disabled selected>Choose a generator to configure</option>
+
+      <% @generators_dropdown.each do |value, text| %>
+        <option value="<%= value %>"><%= text %></option>
+      <% end %>
+    </select>
+  </label>
+</div>
+
 <div class="md:grid md:grid-cols-2 md:gap-16">
   <div class="md:flex md:flex-col">
     <div class="mb-4 md:text-lg">
@@ -28,9 +40,4 @@
       <pre data-prefix="#"><code>Add require('daisyui') inside tailwind.config.js</code></pre>
     </div>
   </div>
-</div>
-
-<div class="my-10 md:my-14 text-center">
-  <p class="uppercase text-4xl font-bold bg-gradient-to-r from-orange-700 via-blue-500 to-green-400 text-transparent bg-clip-text animate-gradient">Coming Soon</p>
-  <p class="text-xs">(Free for everyone)</p>
 </div>

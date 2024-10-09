@@ -32,7 +32,8 @@
   </head>
 
   <body class="min-h-screen flex flex-col">
-    <!-- Main content area -->
+    <%= render partial: "shared/navbar" %>
+
     <main class="flex-grow p-4 md:p-8">
       <div class="container mx-auto">
         <%= yield %>
@@ -47,7 +48,7 @@
           </p>
         </div>
 
-        <div class="mt-2 text-sm">
+        <div class="mt-2 text-xs">
           Powered by <a href="https://github.com/abhaynikam/boring_generators" target="_blank" class="hover:underline underline-offset-4">Boring Generators</a>
         </div>
       </div>

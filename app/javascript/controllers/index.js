@@ -9,3 +9,6 @@ application.register("generator-command", GeneratorCommandController)
 
 import ClipboardController from "./clipboard_controller"
 application.register("clipboard", ClipboardController)
+
+import SearchController from "./search_controller"
+application.register("search", SearchController)
