@@ -88,7 +88,7 @@ GEM
       activerecord (>= 3.2, < 8.0)
       rake (>= 10.4, < 14.0)
     ast (2.4.2)
-    avo (3.13.5)
+    avo (3.13.6)
       actionview (>= 6.1)
       active_link_to
       activerecord (>= 6.1)
@@ -96,9 +96,9 @@ GEM
       addressable
       docile
       inline_svg
-      literal (~> 0.2)
       meta-tags
       pagy (>= 7.0.0)
+      prop_initializer (>= 0.2.0)
       turbo-rails (>= 2.0.0)
       turbo_power (>= 0.6.0)
       view_component (>= 3.7.0)
@@ -164,7 +164,6 @@ GEM
       childprocess (~> 5.0)
     letter_opener (1.10.0)
       launchy (>= 2.2, < 4)
-    literal (0.2.1)
     logger (1.6.1)
     loofah (2.22.0)
       crass (~> 1.0.2)
@@ -215,13 +214,15 @@ GEM
       racc
     pg (1.5.8)
     prettier_print (1.2.1)
+    prop_initializer (0.2.0)
+      zeitwerk (>= 2.6.18)
     psych (5.1.2)
       stringio
     public_suffix (6.0.1)
     puma (6.4.3)
       nio4r (~> 2.0)
     racc (1.8.1)
-    rack (3.1.7)
+    rack (3.1.8)
     rack-mini-profiler (3.3.1)
       rack (>= 1.2.0)
     rack-session (2.0.0)
@@ -365,7 +366,7 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.18)
+    zeitwerk (2.7.0)
 
 PLATFORMS
   aarch64-linux
