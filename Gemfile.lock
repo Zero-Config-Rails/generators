@@ -88,7 +88,7 @@ GEM
       activerecord (>= 3.2, < 8.0)
       rake (>= 10.4, < 14.0)
     ast (2.4.2)
-    avo (3.13.6)
+    avo (3.13.7)
       actionview (>= 6.1)
       active_link_to
       activerecord (>= 6.1)
@@ -347,8 +347,8 @@ GEM
     unicode-display_width (2.6.0)
     uniform_notifier (1.16.0)
     useragent (0.16.10)
-    view_component (3.17.0)
-      activesupport (>= 5.2.0, < 8.0)
+    view_component (3.19.0)
+      activesupport (>= 5.2.0, < 8.1)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
     web-console (4.2.1)
@@ -363,7 +363,7 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.7.0)
+    zeitwerk (2.7.1)
 
 PLATFORMS
   aarch64-linux
