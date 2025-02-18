@@ -89,12 +89,13 @@ GEM
       activerecord (>= 3.2, < 8.0)
       rake (>= 10.4, < 14.0)
     ast (2.4.2)
-    avo (3.17.6)
+    avo (3.17.7)
       actionview (>= 6.1)
       active_link_to
       activerecord (>= 6.1)
       activesupport (>= 6.1)
       addressable
+      avo-heroicons (>= 0.1.1)
       docile
       inline_svg
       meta-tags
@@ -104,6 +105,7 @@ GEM
       turbo_power (>= 0.6.0)
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
+    avo-heroicons (0.1.1)
     base64 (0.2.0)
     benchmark (0.4.0)
     bigdecimal (3.1.9)
