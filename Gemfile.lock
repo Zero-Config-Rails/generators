@@ -89,7 +89,7 @@ GEM
       activerecord (>= 3.2, < 8.0)
       rake (>= 10.4, < 14.0)
     ast (2.4.2)
-    avo (3.19.3)
+    avo (3.20.0)
       actionview (>= 6.1)
       active_link_to
       activerecord (>= 6.1)
@@ -230,7 +230,7 @@ GEM
     psych (5.2.4)
       date
       stringio
-    public_suffix (6.0.1)
+    public_suffix (6.0.2)
     puma (6.6.0)
       nio4r (~> 2.0)
     racc (1.8.1)
