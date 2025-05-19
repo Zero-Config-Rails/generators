@@ -89,7 +89,7 @@ GEM
       activerecord (>= 3.2, < 8.0)
       rake (>= 10.4, < 14.0)
     ast (2.4.2)
-    avo (3.20.1)
+    avo (3.20.2)
       actionview (>= 6.1)
       active_link_to
       activerecord (>= 6.1)
@@ -234,7 +234,7 @@ GEM
     puma (6.6.0)
       nio4r (~> 2.0)
     racc (1.8.1)
-    rack (3.1.14)
+    rack (3.1.15)
     rack-mini-profiler (3.3.1)
       rack (>= 1.2.0)
     rack-session (2.1.1)
