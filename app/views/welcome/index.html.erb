@@ -3,15 +3,13 @@
 </div>
 
 <div class="flex justify-center items-center my-6 md:mb-16" data-controller="search">
-  <label class="form-control w-full max-w-xs">
-    <select class="select select-secondary" data-action="change->search#redirect">
-      <option disabled selected>Choose a generator to configure</option>
+  <select class="select select-secondary" data-action="change->search#redirect">
+    <option disabled selected>Choose a generator to configure</option>
 
-      <% @generators_dropdown.each do |value, text| %>
-        <option value="<%= value %>"><%= text %></option>
-      <% end %>
-    </select>
-  </label>
+    <% @generators_dropdown.each do |value, text| %>
+      <option value="<%= value %>"><%= text %></option>
+    <% end %>
+  </select>
 </div>
 
 <div class="md:grid md:grid-cols-2 md:gap-16 mb-6">
