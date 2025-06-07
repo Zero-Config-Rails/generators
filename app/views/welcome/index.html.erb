@@ -4,7 +4,7 @@
 
 <div class="flex justify-center items-center my-6 md:mb-16" data-controller="search">
   <label class="form-control w-full max-w-xs">
-    <select class="select select-secondary select-bordered" data-action="change->search#redirect">
+    <select class="select select-secondary" data-action="change->search#redirect">
       <option disabled selected>Choose a generator to configure</option>
 
       <% @generators_dropdown.each do |value, text| %>
