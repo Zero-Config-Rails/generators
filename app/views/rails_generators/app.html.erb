@@ -1,0 +1,54 @@
+<% configurations = rails_app_generator_configurations %>
+
+<div class="grid gap-4" data-controller="generator-command">
+  <h2 class="font-bold text-3xl">Generate a new Rails App</h2>
+
+  <div data-controller="clipboard" class="mockup-code pb-0">
+    <label class="swap absolute top-4 right-4">
+      <!-- this hidden checkbox controls the state -->
+      <input type="checkbox" class="hidden" data-action="click->clipboard#copy" data-clipboard-target="checkbox" />
+
+      <%= heroicon "clipboard", options: { class: "swap-off" } %>
+      <%= heroicon "check", options: { class: "swap-on text-success" } %>
+    </label>
+
+    <div class="generator-command max-h-16 overflow-y-auto">
+      <div class="pb-6">
+        <pre class="whitespace-pre-wrap break-all mx-6 p-0 before:mr-0"><code data-clipboard-target="source">rails new<span id="application_name"><%= " <APP_NAME>" %></span><%= safe_join(rails_app_configuration_options(configurations)) %></code></pre>
+      </div>
+    </div>
+  </div>
+
+   <div class="grid gap-4 md:gap-8 md:grid-cols-2">
+    <% configurations.each do |configuration|%>
+      <% if configuration.is_boolean_field %>
+        <%= render "configurations/fieldables/boolean_field", field: configuration.fieldable, configuration: configuration %>
+      <% else %>
+        <fieldset class="fieldset">
+          <div class="flex justify-between mb-1">
+            <label class="label text-sm"><%= configuration_title(configuration) %></label>
+
+            <% if configuration.description.present? %>
+              <div class="tooltip tooltip-left" data-tip="<%= configuration.description %>">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  class="stroke-neutral-content size-5 shrink-0">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                  </path>
+                </svg>
+              </div>
+            <% end %>
+          </div>
+
+          <%= render "configurations/fieldables/#{configuration.fieldable_name}", field: configuration.fieldable, configuration_key: configuration.configuration_key, should_hide_configuration_name: configuration.should_hide_configuration_name %>
+        </fieldset>
+      <% end %>
+    <% end %>
+  </div>
+</div>
