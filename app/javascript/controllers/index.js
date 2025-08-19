@@ -4,11 +4,14 @@
 
 import { application } from "./application"
 
-import GeneratorCommandController from "./generator_command_controller"
-application.register("generator-command", GeneratorCommandController)
-
 import ClipboardController from "./clipboard_controller"
 application.register("clipboard", ClipboardController)
 
+import GeneratorCommandController from "./generator_command_controller"
+application.register("generator-command", GeneratorCommandController)
+
 import SearchController from "./search_controller"
 application.register("search", SearchController)
+
+import VisibilityTogglerController from "./visibility_toggler_controller"
+application.register("visibility-toggler", VisibilityTogglerController)

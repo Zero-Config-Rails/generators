@@ -1,1 +1,3 @@
-<input type="text" class="input w-full" data-generator-command-configuration-id-value="<%= configuration_key %>" data-action="input->generator-command#update" />
+<% should_hide_configuration_name ||= false %>
+
+<input type="text" class="input w-full" data-generator-command-configuration-id-value="<%= configuration_key %>" data-generator-command-hide-configuration-name-value="<%= should_hide_configuration_name %>" data-action="input->generator-command#update" />

@@ -2,23 +2,26 @@
   <div class="flex-1">
     <a class="btn btn-ghost text-base md:text-xl" href="<%= root_path %>"><span class="md:hidden">ZCR -</span> Generators<sup class="text-xs hidden md:block">By Zero Config Rails</sup></a>
   </div>
+
   <div class="flex-none">
-    <ul class="menu menu-horizontal px-1">
+    <ul class="menu menu-horizontal px-1 items-center flex gap-2">
+      <li>
+        <details>
+          <summary>Rails Generators</summary>
+          <ul class="dropdown-content menu bg-base-200 rounded-box border border-white/5 p-2 shadow-2xl outline-1 outline-black/5 w-56">
+            <li>
+              <a href="<%= app_rails_generators_path %>" class="text-base">
+                <span>App Generator</span>
+              </a>
+            </li>
+          </ul>
+        </details>
+      </li>
       <li>
         <a href="https://zeroconfigrails.com" class="text-base border border-b-4 border-primary">
           <span class="hidden md:block">Get Zero Config Rails</span><span class="md:hidden">Our Product</span>
         </a>
       </li>
-      <!-- NOTE: Useful later for adding rails related generators -->
-      <!--      <li>
-        <details>
-          <summary>Parent</summary>
-          <ul class="bg-base-100 rounded-t-none p-2">
-            <li><a>Link 1</a></li>
-            <li><a>Link 2</a></li>
-          </ul>
-        </details>
-      </li>-->
     </ul>
   </div>
 </div>

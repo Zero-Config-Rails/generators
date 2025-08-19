@@ -15,4 +15,10 @@ Rails.application.routes.draw do
   root "welcome#index"
 
   get "/install/:identifier", to: "generators#show", as: :generators
+
+  resources :rails_generators, only: [] do
+    collection do
+      get :app
+    end
+  end
 end

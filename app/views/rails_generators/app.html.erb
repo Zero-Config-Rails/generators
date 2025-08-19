@@ -1,0 +1,27 @@
+<% required_configurations = rails_app_generator_configurations %>
+<% optional_configurations = optional_rails_app_generator_configurations %>
+<% configurations = required_configurations + optional_rails_app_generator_configurations %>
+
+<div class="grid gap-4" data-controller="generator-command visibility-toggler">
+  <h2 class="font-bold text-3xl">Generate a new Rails App</h2>
+
+  <%= render "shared/command_clipboard", configurations: configurations do %>
+    rails new<span id="application_name"><%= " <APP_NAME>" %></span><%= safe_join(configuration_options(configurations)) %>
+  <% end %>
+
+  <%= render "generators/configurations", configurations: required_configurations %>
+
+  <div class="flex items-center gap-2 p-4 bg-base-200 rounded-lg">
+      <input type="checkbox" id="show-optional-options" class="checkbox" data-action="change->visibility-toggler#change" />
+      <label for="show-optional-options" class="label cursor-pointer">
+        <span class="label-text">Show all configurations</span>
+      </label>
+  </div>
+
+    <!-- Optional configurations (hidden by default) -->
+  <div class="hidden md:grid-cols-2" data-visibility-toggler-target="container">
+      <div class="divider">Optional configurations</div>
+      
+      <%= render "generators/configurations", configurations: optional_configurations %>
+  </div>
+</div>

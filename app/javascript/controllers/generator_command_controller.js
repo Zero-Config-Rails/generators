@@ -5,6 +5,7 @@ export default class extends Controller {
     const { target } = event
     const { dataset, checked } = target
     const configurationId = dataset.generatorCommandConfigurationIdValue
+    const shouldHideConfigurationName = dataset.generatorCommandHideConfigurationNameValue
 
     let value = target.value
 
@@ -12,8 +13,14 @@ export default class extends Controller {
       value = checked
     }
 
-    const updatedConfiguration = ` --${configurationId}=${value}`
+    let updatedConfiguration = ` --${configurationId}=${value}`
 
-    document.getElementById(configurationId).textContent = updatedConfiguration
+    if (shouldHideConfigurationName == "true") {
+      updatedConfiguration = ` ${value}`
+    }
+
+    const element = document.getElementById(configurationId)
+    element.textContent = updatedConfiguration
+    element.hidden = value === ""
   }
 }

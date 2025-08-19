@@ -1,0 +1,32 @@
+<div class="grid gap-4 md:gap-8 md:grid-cols-2">
+  <% configurations.each do |configuration|%>
+    <% if configuration.fieldable_name == "boolean_field" %>
+      <%= render "configurations/fieldables/boolean_field", field: configuration.fieldable, configuration: configuration %>
+    <% else %>
+      <fieldset class="fieldset">
+        <div class="flex justify-between mb-1">
+          <label class="label text-sm"><%= configuration_title(configuration) %></label>
+
+          <% if configuration.description.present? %>
+            <div class="tooltip tooltip-left" data-tip="<%= configuration.description %>">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                class="stroke-neutral-content size-5 shrink-0">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                </path>
+              </svg>
+            </div>
+          <% end %>
+        </div>
+
+        <%= render "configurations/fieldables/#{configuration.fieldable_name}", field: configuration.fieldable, configuration_key: configuration.configuration_key, should_hide_configuration_name: configuration.try(:should_hide_configuration_name) %>
+      </fieldset>
+    <% end %>
+  <% end %>
+</div>
