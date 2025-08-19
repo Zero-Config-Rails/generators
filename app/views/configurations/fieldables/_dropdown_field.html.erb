@@ -1,7 +1,7 @@
 <% default_value = field.default_value %>
 
 <select class="select w-full" data-generator-command-configuration-id-value="<%= configuration_key %>" data-action="change->generator-command#update">
-  <% if field.default_value.blank? %>
+  <% if default_value.blank? %>
     <option value="">Select an option</option>
   <% end %>
 
