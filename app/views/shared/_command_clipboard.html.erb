@@ -1,0 +1,16 @@
+<div data-controller="clipboard" class="mockup-code pb-0">
+  <label class="swap absolute top-4 right-4">
+    <!-- this hidden checkbox controls the state -->
+    <input type="checkbox" class="hidden" data-action="click->clipboard#copy" data-clipboard-target="checkbox" />
+
+    <%= heroicon "clipboard", options: { class: "swap-off" } %>
+    <%= heroicon "check", options: { class: "swap-on text-success" } %>
+  </label>
+
+  <div class="generator-command max-h-16 overflow-y-auto">
+    <div class="pb-6">
+      <!-- raw capture { yield }.strip removes unnecessary whitespace while still keeping HTML tags intact -->
+      <pre class="whitespace-pre-wrap break-all mx-6 p-0 before:mr-0"><code data-clipboard-target="source"><%= raw capture { yield }.strip %></code></pre>
+    </div>
+  </div>
+</div>

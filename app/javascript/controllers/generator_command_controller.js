@@ -5,7 +5,7 @@ export default class extends Controller {
     const { target } = event
     const { dataset, checked } = target
     const configurationId = dataset.generatorCommandConfigurationIdValue
-    const hideConfigurationName = dataset.generatorCommandHideConfigurationNameValue
+    const shouldHideConfigurationName = dataset.generatorCommandHideConfigurationNameValue
 
     let value = target.value
 
@@ -15,7 +15,7 @@ export default class extends Controller {
 
     let updatedConfiguration = ` --${configurationId}=${value}`
 
-    if (Boolean(hideConfigurationName)) {
+    if (shouldHideConfigurationName == "true") {
       updatedConfiguration = ` ${value}`
     }
 
