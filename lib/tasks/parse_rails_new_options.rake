@@ -103,7 +103,8 @@ namespace :rails_new do
 
     # Determine the field type based on the option
     field_type = determine_field_type(option_name, description)
-    default_value = extract_default_value(description) unless option_name == "ruby"
+    default_value = extract_default_value(description) unless option_name ==
+      "ruby"
     options = extract_options(option_name, description) # Pass option_name here
 
     {
@@ -123,14 +124,7 @@ namespace :rails_new do
 
   def should_ignore_configuration?(option_name)
     # These configurations should be ignored/not included
-    ignored_configurations = %w[
-      name
-      skip-namespace
-      skip-collision-check
-      rc
-      no-rc
-      ruby
-    ]
+    ignored_configurations = %w[name]
 
     ignored_configurations.include?(option_name)
   end
