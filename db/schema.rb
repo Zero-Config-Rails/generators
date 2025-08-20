@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_25_160458) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_20_052133) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension "pg_catalog.plpgsql"
 
   create_table "boolean_fields", force: :cascade do |t|
     t.boolean "default_value"
