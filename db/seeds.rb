@@ -71,3 +71,5 @@ Generator.create!(
     }
   ]
 )
+
+Rake::Task["generator:seed"].invoke

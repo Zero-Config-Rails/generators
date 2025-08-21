@@ -22,19 +22,21 @@
 #
 
 one:
-  name: MyString
+  identifier: $LABEL
+  name: $LABEL
   short_description: MyString
   description: MyText
   git_url: MyString
-  user_guide_url: MyString
+  user_guide_urls: [https://example.com]
   logo_url: MyString
   invocation_command: MyString
 
 two:
-  name: MyString
+  identifier: $LABEL
+  name: $LABEL
   short_description: MyString
   description: MyText
   git_url: MyString
-  user_guide_url: MyString
+  user_guide_urls: [https://example.com]
   logo_url: MyString
   invocation_command: MyString
