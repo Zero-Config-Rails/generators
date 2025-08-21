@@ -2,12 +2,13 @@
 #
 # Table name: boolean_fields
 #
-#  id            :bigint           not null, primary key
+#  id            :integer          not null, primary key
 #  default_value :boolean
 #  display_type  :string
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #
+
 require "test_helper"
 
 class BooleanFieldTest < ActiveSupport::TestCase

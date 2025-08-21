@@ -2,12 +2,13 @@
 #
 # Table name: dropdown_fields
 #
-#  id            :bigint           not null, primary key
-#  default_value :string
+#  id            :integer          not null, primary key
 #  options       :json
+#  default_value :string
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #
+
 require "test_helper"
 
 class DropdownFieldTest < ActiveSupport::TestCase
