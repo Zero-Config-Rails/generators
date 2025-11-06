@@ -92,7 +92,7 @@ GEM
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
     ast (2.4.3)
-    avo (3.26.0)
+    avo (3.26.2)
       actionview (>= 6.1)
       active_link_to
       activerecord (>= 6.1)
@@ -101,7 +101,7 @@ GEM
       avo-icons (>= 0.1.1)
       docile
       meta-tags
-      pagy (>= 7.0.0)
+      pagy (>= 7.0.0, < 43)
       prop_initializer (>= 0.2.0)
       turbo-rails (>= 2.0.0)
       turbo_power (>= 0.6.0)
@@ -221,9 +221,7 @@ GEM
       childprocess (>= 0.6.3, < 6)
       iniparse (~> 1.4)
       rexml (>= 3.3.9)
-    pagy (43.0.0)
-      json
-      yaml
+    pagy (9.4.0)
     parallel (1.27.0)
     parser (3.3.8.0)
       ast (~> 2.4.1)
@@ -386,7 +384,6 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    yaml (0.4.0)
     zeitwerk (2.7.3)
 
 PLATFORMS
