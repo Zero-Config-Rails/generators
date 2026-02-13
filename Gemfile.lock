@@ -92,7 +92,7 @@ GEM
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
     ast (2.4.3)
-    avo (3.29.0)
+    avo (3.29.1)
       actionview (>= 6.1)
       active_link_to
       activerecord (>= 6.1)
