@@ -1,6 +1,37 @@
 @import "tailwindcss";
 @plugin "daisyui" {
-  themes: night;
+  themes: dark --default;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  :root,
+  [data-theme="zcr"] {
+    color-scheme: dark;
+    --color-base-100: #1e293b;
+    --color-base-200: #0f172a;
+    --color-base-300: #334155;
+    --color-base-content: #e2e8f0;
+    --color-primary: #1e293b;
+    --color-primary-content: #f8fafc;
+    --color-secondary: #334155;
+    --color-secondary-content: #f1f5f9;
+    --color-accent: #0ea5e9;
+    --color-accent-content: #f0f9ff;
+    --color-neutral: #475569;
+    --color-neutral-content: #f8fafc;
+    --color-info: #38bdf8;
+    --color-info-content: #082f49;
+    --color-success: #22c55e;
+    --color-success-content: #052e16;
+    --color-warning: #f59e0b;
+    --color-warning-content: #451a03;
+    --color-error: #ef4444;
+    --color-error-content: #450a0a;
+  }
 }
 
 /*
@@ -17,19 +48,9 @@
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
+    border-color: var(--color-base-300, currentcolor);
   }
 }
-
-/*
-
-@layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
-  }
-}
-
-*/
 
 @keyframes animated-gradient {
   0% {

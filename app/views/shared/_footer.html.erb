@@ -1,0 +1,28 @@
+<footer class="mt-auto bg-base-100 text-base-content border-t border-base-300/60">
+  <div class="max-w-4xl mx-auto px-6 sm:px-8 py-12 md:py-16 text-center">
+    <div class="space-y-3">
+      <p class="font-bold text-xl tracking-tight">
+        <a href="<%= root_path %>" class="hover:text-accent transition-colors">Zero Config Rails</a>
+      </p>
+      <p class="text-base text-base-content/70 leading-relaxed max-w-2xl mx-auto"><%= NavigationHelper::ZCR_TAGLINE %></p>
+    </div>
+
+    <nav class="mt-8 md:mt-10 space-y-4" aria-label="Footer">
+      <ul class="flex flex-wrap justify-center items-center gap-x-6 gap-y-3 text-base">
+        <li><a href="<%= root_path %>" class="link link-hover link-accent px-1 py-0.5">Tools</a></li>
+        <li><a href="<%= NavigationHelper::ZCR_SITE_URL %>/pricing" class="link link-hover link-accent px-1 py-0.5">Pricing</a></li>
+        <li><a href="<%= NavigationHelper::ZCR_APP_URL %>" class="link link-hover link-accent px-1 py-0.5">Dashboard</a></li>
+        <li><a href="mailto:hello@zeroconfigrails.com" class="link link-hover link-accent px-1 py-0.5">hello@zeroconfigrails.com</a></li>
+      </ul>
+    </nav>
+
+    <p class="mt-10 md:mt-12 pt-6 border-t border-base-300 text-sm text-base-content/60">
+      &copy; <%= Time.current.year %> Zero Config Rails. All rights reserved.
+    </p>
+
+    <p class="mt-3 text-xs text-base-content/50">
+      Gem installers powered by
+      <a href="https://github.com/abhaynikam/boring_generators" target="_blank" rel="noopener" class="link link-hover">Boring Generators</a>
+    </p>
+  </div>
+</footer>
