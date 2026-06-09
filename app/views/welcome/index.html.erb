@@ -1,46 +1,157 @@
-<div class="my-6 md:mt-12 md:mb-16 md:text-center">
-  <h1 class="text-primary text-2xl md:text-4xl font-bold">Single command to add any Ruby gem</h1>
-</div>
+<section class="hero min-h-[65vh] bg-primary text-primary-content">
+  <div class="hero-content text-center py-16 md:py-24 px-6 max-w-4xl">
+    <div class="w-full flex flex-col items-center">
+      <span class="badge badge-outline badge-lg font-medium mb-6">Free developer tools</span>
 
-<div class="flex justify-center items-center my-6 md:mb-16" data-controller="search">
-  <select class="select select-secondary" data-action="change->search#redirect">
-    <option disabled selected>Choose a generator to configure</option>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tight mb-6">
+        Copy the command.<br class="hidden sm:inline"> Skip the setup.
+      </h1>
 
-    <% @generators_dropdown.each do |value, text| %>
-      <option value="<%= value %>"><%= text %></option>
-    <% end %>
-  </select>
-</div>
+      <p class="text-lg md:text-xl text-primary-content/80 max-w-2xl mx-auto mb-10 leading-relaxed">
+        Interactive configurators from
+        <a href="<%= NavigationHelper::ZCR_SITE_URL %>" class="hover:underline animate-gradient bg-gradient-to-r from-orange-700 via-blue-500 to-green-400 text-transparent bg-clip-text" target="_blank" rel="noopener">Zero Config Rails</a>.
+        Build <code class="text-sm bg-primary-content/10 px-1.5 py-0.5 rounded">rails new</code> commands, install gems with one line, and skip the manual wiring.
+      </p>
 
-<div class="md:grid md:grid-cols-2 md:gap-16 mb-6">
-  <div class="md:flex md:flex-col">
-    <div class="mb-4 md:text-lg">
-      <span class="uppercase font-semibold">Just This</span>
-    </div>
-
-    <div class="text-secondary md:flex-grow md:items-start">
-      <div class="mockup-code md:h-full">
-        <pre data-prefix="$"><code>zen add daisy_ui</code></pre>
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2.5 sm:gap-3 w-full sm:w-auto">
+        <a href="#tools" class="btn btn-accent btn-md sm:btn-lg px-8 sm:px-10 min-h-12 sm:min-h-14 text-sm sm:text-base font-semibold">
+          Browse tools
+        </a>
+        <a href="<%= NavigationHelper::ZCR_APP_URL %>" class="btn btn-md sm:btn-lg min-h-12 sm:min-h-14 px-8 sm:px-10 text-sm sm:text-base font-semibold bg-transparent border-2 border-primary-content/25 text-primary-content hover:bg-primary-content/10 hover:border-primary-content/40" target="_blank" rel="noopener">
+          Get the full SaaS compiler
+        </a>
       </div>
     </div>
   </div>
+</section>
 
-  <div class="max-sm:mt-4">
-    <div class="text-lg">
-      Instead of all these
+<section id="tools" class="py-16 md:py-24 px-4 sm:px-8">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-12 md:mb-16">
+      <p class="text-sm font-semibold uppercase tracking-wider text-accent mb-3">Available now</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-base-content mb-4">Every tool in one place</h2>
+      <p class="text-base-content/70 max-w-2xl mx-auto leading-relaxed">
+        Pick a configurator, tune the options, copy the command. No account required for these tools.
+      </p>
     </div>
 
-    <div class="mockup-code mt-4">
-      <pre data-prefix="$"><code>bundle add tailwindcss-rails</code></pre>
-      <pre data-prefix="$"><code>bin/rails tailwindcss:install</code></pre>
-      <pre data-prefix="$"><code>npm i -D daisyui@latest</code></pre>
-      <pre></pre>
-      <pre data-prefix="#"><code>Add require('daisyui') inside tailwind.config.js</code></pre>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+      <% rails_tool = rails_app_generator_tool %>
+      <a href="<%= rails_tool[:path] %>" class="card bg-base-100 border border-base-300/60 shadow-sm hover:shadow-lg hover:shadow-accent/5 hover:border-accent/40 transition-all group">
+        <div class="card-body gap-4">
+          <div class="flex items-start justify-between gap-3">
+            <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-accent/15 text-accent shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <span class="badge badge-outline badge-sm font-mono text-xs"><%= rails_tool[:command] %></span>
+          </div>
+          <div>
+            <h3 class="font-bold text-lg group-hover:text-accent transition-colors"><%= rails_tool[:name] %></h3>
+            <p class="text-sm text-base-content/70 leading-relaxed mt-2"><%= rails_tool[:description] %></p>
+          </div>
+          <span class="text-sm font-medium text-accent mt-auto">Open tool →</span>
+        </div>
+      </a>
+
+      <% gem_installer_tools.each do |tool| %>
+        <a href="<%= tool[:path] %>" class="card bg-base-100 border border-base-300/60 shadow-sm hover:shadow-lg hover:shadow-accent/5 hover:border-accent/40 transition-all group">
+          <div class="card-body gap-4">
+            <div class="flex items-start justify-between gap-3">
+              <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-accent/10 text-accent shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                </svg>
+              </div>
+              <span class="badge badge-outline badge-sm font-mono text-xs truncate max-w-[9rem]" title="<%= tool[:command] %>"><%= tool[:command] %></span>
+            </div>
+            <div>
+              <h3 class="font-bold text-lg group-hover:text-accent transition-colors"><%= tool[:name] %></h3>
+              <% if tool[:description].present? %>
+                <p class="text-sm text-base-content/70 leading-relaxed mt-2 line-clamp-3"><%= tool[:description] %></p>
+              <% end %>
+            </div>
+            <span class="text-sm font-medium text-accent mt-auto">Configure →</span>
+          </div>
+        </a>
+      <% end %>
     </div>
   </div>
-</div>
+</section>
 
-<div class="my-10 md:my-14 text-center">
-  <p class="uppercase text-xl md:text-4xl font-bold bg-gradient-to-r from-orange-700 via-blue-500 to-green-400 text-transparent bg-clip-text animate-gradient">More Generators Coming Soon</p>
-  <p class="text-xs">(Free for everyone)</p>
-</div>
+<section class="py-16 md:py-24 px-4 sm:px-8 bg-base-100/40 border-y border-base-300/60">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-12">
+      <p class="text-sm font-semibold uppercase tracking-wider text-accent mb-3">Gem installers</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-base-content mb-4">One command instead of a checklist</h2>
+      <p class="text-base-content/70 max-w-2xl mx-auto leading-relaxed">
+        The <span class="font-semibold">zen</span> gem wraps
+        <a href="https://github.com/abhaynikam/boring_generators" class="link link-accent" target="_blank" rel="noopener">Boring Generators</a>
+        so you configure options in the browser and paste a single install line.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-wide text-base-content/60 mb-3">Just this</p>
+        <div class="mockup-code border border-primary/30">
+          <pre data-prefix="$"><code>gem install zcr-zen</code></pre>
+          <pre data-prefix="$"><code>zen add devise</code></pre>
+        </div>
+      </div>
+
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-wide text-base-content/60 mb-3">Instead of all this</p>
+        <div class="mockup-code bg-primary text-primary-content border border-primary/30">
+          <pre data-prefix="$"><code>bundle add devise</code></pre>
+          <pre data-prefix="$"><code>bin/rails generate devise:install</code></pre>
+          <pre data-prefix="$"><code>bin/rails generate devise User</code></pre>
+          <pre data-prefix="$"><code>bin/rails db:migrate</code></pre>
+          <pre data-prefix="#"><code>Configure mailer, routes, flashes…</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 md:py-24 px-4 sm:px-8">
+  <div class="max-w-6xl mx-auto">
+    <div class="card bg-base-100 border border-base-300/60 text-base-content shadow-xl overflow-hidden">
+      <div class="card-body gap-6 p-8 md:p-12">
+        <span class="badge badge-accent w-fit">The full product</span>
+        <h2 class="text-2xl md:text-4xl font-bold leading-tight max-w-3xl">
+          Need the whole SaaS stack — not just one gem?
+        </h2>
+        <p class="text-base-content/70 leading-relaxed max-w-3xl text-lg">
+          Zero Config Rails compiles regression-tested Rails 8 apps with teams, Stripe billing, admin, and CI already wired.
+          Same integrated stack every time — you own the source.
+        </p>
+        <ul class="grid gap-3 text-sm text-base-content/80 sm:grid-cols-2 pt-2">
+          <li class="flex gap-2.5 items-start">
+            <span class="text-accent shrink-0 mt-0.5">✓</span>
+            <span>SaaS or Vanilla Rails recipe at compile time</span>
+          </li>
+          <li class="flex gap-2.5 items-start">
+            <span class="text-accent shrink-0 mt-0.5">✓</span>
+            <span>Pay, Pundit, admin, Kamal deploy path</span>
+          </li>
+          <li class="flex gap-2.5 items-start">
+            <span class="text-accent shrink-0 mt-0.5">✓</span>
+            <span>CI matrix passes before you download</span>
+          </li>
+          <li class="flex gap-2.5 items-start">
+            <span class="text-accent shrink-0 mt-0.5">✓</span>
+            <span><code class="text-xs bg-base-300/50 px-1 rounded">.cursor/rules</code> and <code class="text-xs bg-base-300/50 px-1 rounded">AGENTS.md</code> included</span>
+          </li>
+        </ul>
+        <div class="flex flex-col sm:flex-row gap-3 pt-4">
+          <a href="<%= NavigationHelper::ZCR_APP_URL %>" class="btn btn-accent btn-lg" target="_blank" rel="noopener">Go to Dashboard</a>
+          <a href="<%= NavigationHelper::ZCR_APP_URL %>/pricing" class="btn btn-lg btn-outline border-base-300 text-base-content hover:bg-base-300/40 hover:border-base-300" target="_blank" rel="noopener">
+            View pricing
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

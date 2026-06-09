@@ -1,56 +1,44 @@
 <!DOCTYPE html>
-<html data-theme="night">
+<html lang="en" data-theme="zcr">
   <head>
-    <title><%= content_for(:title) || "Zero Config Rails - Generators" %></title>
+    <title><%= content_for(:title) || "Zero Config Rails Generators - Free Rails Developer Tools" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#1e293b">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= yield :head %>
 
     <link rel="manifest" href="/manifest.json">
-    <link rel="icon" href="/favicon.png" type="image/png">
-    <!--<link rel="icon" href="/icon.svg" type="image/svg+xml">-->
-    <link rel="apple-touch-icon" href="/icon.png">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
+    <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
 
-    <meta name="keywords" content="rails generator, automated gem installer, gem installer, rails scaffold generator, rails model generator, rails controller generator, rails view generator">
-    <meta name="title" content="Zero Config Rails - Generators">
-    <meta name="description" content="Configure any Ruby gem inside your project with a single command.">
+    <meta name="keywords" content="rails generator, zero config rails, rails new generator, gem installer, boring generators, rails saas starter">
+    <meta name="title" content="Zero Config Rails Generators - Free Rails Developer Tools">
+    <meta name="description" content="Free interactive tools for Rails teams - configure rails new, install gems with a single command, and skip the setup sprint. From the makers of Zero Config Rails.">
 
-    <meta name="twitter:title" content="Zero Config Rails - Generators">
-    <meta name="twitter:description" content="Configure any Ruby gem inside your project with a single command.">
+    <meta name="twitter:title" content="Zero Config Rails Generators — Free Rails Developer Tools">
+    <meta name="twitter:description" content="Free interactive tools for Rails teams — configure rails new, install gems with a single command, and skip the setup sprint.">
     <meta name="twitter:image" content="<%= image_url('/meta/cover.png') %>">
     <meta name="twitter:card" content="summary_large_image">
 
-    <meta property="og:title" content="Zero Config Rails - Generators">
+    <meta property="og:title" content="Zero Config Rails Generators - Free Rails Developer Tools">
     <meta property="og:image" content="<%= image_url('/meta/cover.png') %>">
-    <meta property="og:description" content="Configure any Ruby gem inside your project with a single command.">
+    <meta property="og:description" content="Free interactive tools for Rails teams — configure rails new, install gems with a single command, and skip the setup sprint.">
   </head>
 
-  <body class="min-h-screen flex flex-col">
+  <body class="min-h-screen bg-base-200 text-base-content flex flex-col antialiased">
     <%= render partial: "shared/navbar" %>
 
-    <main class="flex-grow p-4 md:p-8">
-      <div class="container mx-auto">
-        <%= yield %>
-      </div>
+    <main class="flex-grow">
+      <%= yield %>
     </main>
 
-    <footer class="bg-gray-800 text-white p-4">
-      <div class="container mx-auto text-center">
-        <div>
-          <p>
-            With <span class="text-red-500">♥️</span> from <a href="https://zeroconfigrails.com" target="_blank" class="text-secondary underline underline-offset-4">Zero Config Rails</a>
-          </p>
-        </div>
-
-        <div class="mt-2 text-xs">
-          Powered by <a href="https://github.com/abhaynikam/boring_generators" target="_blank" class="hover:underline underline-offset-4">Boring Generators</a>
-        </div>
-      </div>
-    </footer>
+    <%= render partial: "shared/footer" %>
   </body>
 </html>
