@@ -1,5 +1,5 @@
 <div class="grid gap-4 md:gap-8 md:grid-cols-2">
-  <% configurations.each do |configuration|%>
+  <% configurations.each do |configuration| %>
     <% if configuration.fieldable_name == "boolean_field" %>
       <%= render "configurations/fieldables/boolean_field", field: configuration.fieldable, configuration: configuration %>
     <% else %>
@@ -8,7 +8,7 @@
           <label class="label text-sm"><%= configuration_title(configuration) %></label>
 
           <% if configuration.description.present? %>
-            <div class="tooltip tooltip-left" data-tip="<%= configuration.description %>">
+            <div class="tooltip tooltip-left tooltip-primary" data-tip="<%= configuration.description %>">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
