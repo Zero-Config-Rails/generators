@@ -9,10 +9,10 @@
 
     <nav class="mt-8 md:mt-10 space-y-4" aria-label="Footer">
       <ul class="flex flex-wrap justify-center items-center gap-x-6 gap-y-3 text-base">
-        <li><a href="<%= root_path %>" class="link link-hover link-accent px-1 py-0.5">Tools</a></li>
-        <li><a href="<%= NavigationHelper::ZCR_SITE_URL %>/pricing" class="link link-hover link-accent px-1 py-0.5">Pricing</a></li>
-        <li><a href="<%= NavigationHelper::ZCR_APP_URL %>" class="link link-hover link-accent px-1 py-0.5">Dashboard</a></li>
-        <li><a href="mailto:hello@zeroconfigrails.com" class="link link-hover link-accent px-1 py-0.5">hello@zeroconfigrails.com</a></li>
+        <li><a href="<%= root_path(anchor: "tools") %>" class="link link-hover px-1 py-0.5">Tools</a></li>
+        <li><a href="<%= NavigationHelper::ZCR_SITE_URL %>/pricing" class="link link-hover px-1 py-0.5">Pricing</a></li>
+        <li><a href="<%= NavigationHelper::ZCR_APP_URL %>" class="link link-hover px-1 py-0.5">Dashboard</a></li>
+        <li><a href="mailto:hello@zeroconfigrails.com" class="link link-hover px-1 py-0.5">hello@zeroconfigrails.com</a></li>
       </ul>
     </nav>
 

@@ -15,3 +15,12 @@ application.register("search", SearchController)
 
 import VisibilityTogglerController from "./visibility_toggler_controller"
 application.register("visibility-toggler", VisibilityTogglerController)
+
+import ListFieldController from "./list_field_controller"
+application.register("list-field", ListFieldController)
+
+import ToolsSearchController from "./tools_search_controller"
+application.register("tools-search", ToolsSearchController)
+
+import DropdownMenuController from "./dropdown_menu_controller"
+application.register("dropdown-menu", DropdownMenuController)

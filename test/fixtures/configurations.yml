@@ -14,30 +14,19 @@
 #  fieldable_id      :bigint
 #  generator_id      :bigint           not null
 #
-# Indexes
-#
-#  index_configurations_on_configuration_key_and_generator_id  (configuration_key,generator_id) UNIQUE
-#  index_configurations_on_generator_id                        (generator_id)
-#
-# Foreign Keys
-#
-#  fk_rails_...  (generator_id => generators.id)
-#
 
-one:
-  generator: one
-  configuration_key: MyString
-  label: MyString
-  description: MyString
-  fieldable_type: MyString
-  fieldable_id: 
-  is_required: false
+devise_model:
+  generator: devise
+  configuration_key: model_name
+  label: Model name
+  description: Model used for authentication
+  fieldable: devise_model (TextField)
+  is_required: true
 
-two:
-  generator: two
-  configuration_key: MyString
-  label: MyString
-  description: MyString
-  fieldable_type: MyString
-  fieldable_id: 
+annotate_skip:
+  generator: annotate
+  configuration_key: skip_on_db_migrate
+  label: Skip on migrate
+  description: Skip annotating after db:migrate
+  fieldable: annotate_skip (BooleanField)
   is_required: false

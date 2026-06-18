@@ -2,18 +2,25 @@ module NavigationHelper
   include Rails.application.routes.url_helpers
 
   ZCR_SITE_URL = "https://zeroconfigrails.com"
-  # ZCR_APP_URL = "https://app.zeroconfigrails.com"
-  # TODO: For now, just redirect to the site URL. Once we release the app, we can use the app URL.
-  ZCR_APP_URL = "https://zeroconfigrails.com"
+  ZCR_APP_URL = "https://app.zeroconfigrails.com"
   ZCR_TAGLINE = "The multi-flavor SaaS starter kit for modern Rails teams"
 
-  def rails_app_generator_tool
-    {
-      name: "Rails App Generator",
-      description: "Build a rails new command with the right flags — no man page archaeology.",
-      path: app_rails_generators_path,
-      command: "rails new"
-    }
+  def rails_generator_tools
+    RailsGenerators::ConfigurationsHelper::GENERATOR_IDS.map do |id|
+      meta =
+        if id == "app"
+          RailsGenerators::ConfigurationsHelper::APP_META
+        else
+          RailsGenerate::Registry.meta(id)
+        end
+
+      {
+        name: id == "app" ? meta["tool_name"] : "#{meta['title']} Generator",
+        description: meta["description"],
+        path: rails_generator_path(generator: id),
+        command: meta["command"]
+      }
+    end
   end
 
   def gem_installer_tools
@@ -28,6 +35,6 @@ module NavigationHelper
   end
 
   def all_tools
-    [rails_app_generator_tool] + gem_installer_tools
+    rails_generator_tools + gem_installer_tools
   end
 end

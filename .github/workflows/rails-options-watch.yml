@@ -1,0 +1,140 @@
+name: Rails options watch
+
+on:
+  pull_request:
+    paths:
+      - Gemfile
+      - Gemfile.lock
+  push:
+    branches: [main]
+    paths:
+      - Gemfile
+      - Gemfile.lock
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Detect Rails version change
+        id: rails
+        run: |
+          extract_rails_version() {
+            awk '/^    rails \(/ { print $2; exit }' "$1" | tr -d '()'
+          }
+
+          current="$(extract_rails_version Gemfile.lock)"
+          echo "current=$current" >> "$GITHUB_OUTPUT"
+
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            git fetch origin "${{ github.base_ref }}" --depth=1
+            git show "origin/${{ github.base_ref }}:Gemfile.lock" > /tmp/base-Gemfile.lock
+            base="$(extract_rails_version /tmp/base-Gemfile.lock)"
+          elif [ "${{ github.event_name }}" = "push" ]; then
+            if git rev-parse HEAD^ >/dev/null 2>&1; then
+              git show HEAD^:Gemfile.lock > /tmp/base-Gemfile.lock
+              base="$(extract_rails_version /tmp/base-Gemfile.lock)"
+            else
+              base="$current"
+            fi
+          else
+            baseline_version="$(awk '/^rails_version: / { print $2 }' config/rails_generator_options_baseline.yml)"
+            base="$baseline_version"
+          fi
+
+          echo "base=$base" >> "$GITHUB_OUTPUT"
+
+          if [ "$current" = "$base" ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "Rails version unchanged ($current); skipping options drift check."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "Rails version changed ($base -> $current); running options drift check."
+          fi
+
+      - name: Set up Ruby
+        if: steps.rails.outputs.changed == 'true'
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: .ruby-version
+          bundler-cache: true
+
+      - name: Check Rails generator options drift
+        if: steps.rails.outputs.changed == 'true'
+        id: check
+        run: bundle exec rake rails_options:check
+        continue-on-error: true
+
+      - name: Open or update drift issue
+        if: steps.rails.outputs.changed == 'true' && steps.check.outcome == 'failure'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { execSync } = require('child_process')
+            let driftOutput = ''
+            try {
+              execSync('bundle exec rake rails_options:check', { stdio: 'pipe' })
+            } catch (error) {
+              driftOutput = error.stdout?.toString() || error.message
+            }
+
+            const from = '${{ steps.rails.outputs.base }}'
+            const to = '${{ steps.rails.outputs.current }}'
+            const title = `Rails generator options drift detected (${from} -> ${to})`
+            const body = `## Rails generator options drift
+
+            Rails was upgraded from **${from}** to **${to}**. Generator help output differs from \`config/rails_generator_options_baseline.yml\`.
+
+            \`\`\`
+            ${driftOutput.trim()}
+            \`\`\`
+
+            ### Remediation
+
+            \`\`\`bash
+            bundle exec rake rails_new:parse_options
+            bundle exec rake rails_generate:parse_all
+            bundle exec rake rails_options:baseline
+            git add app/helpers/rails_generators config/rails_generator_options_baseline.yml
+            git commit -m "Sync Rails generator options for ${to}"
+            \`\`\`
+
+            _Opened by [rails-options-watch](.github/workflows/rails-options-watch.yml)._`
+
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'rails-options-drift'
+            })
+
+            if (issues.length > 0) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issues[0].number,
+                body
+              })
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                body,
+                labels: ['rails-options-drift']
+              })
+            }
+
+      - name: Fail when drift detected
+        if: steps.rails.outputs.changed == 'true' && steps.check.outcome == 'failure'
+        run: exit 1

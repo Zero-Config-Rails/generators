@@ -1,8 +1,33 @@
 <div class="container mx-auto p-4">
   <div class="grid gap-4" data-controller="generator-command">
-    <div class="flex items-center">
-      <%= generator_logo(@generator) %>
-      <h2 class="font-bold text-3xl">Install <%= generator_title(@generator) %></h2>
+    <div class="flex flex-wrap items-center gap-x-3 gap-y-2 justify-between">
+      <div class="flex items-center">
+        <%= generator_logo(@generator) %>
+        <h2 class="font-bold text-3xl">Install <%= generator_title(@generator) %></h2>
+      </div>
+
+      <% if @generator.user_guide_urls.present? %>
+        <details class="dropdown dropdown-end" data-controller="dropdown-menu" data-action="click@window->dropdown-menu#close">
+          <summary class="btn btn-ghost btn-sm gap-1.5 font-medium">
+            Guides
+            <%= heroicon "chevron-down", variant: :outline, options: { class: "size-4 shrink-0 opacity-70" } %>
+          </summary>
+          <ul class="menu dropdown-content z-[1] mt-1 p-2 shadow-lg bg-base-100 text-base-content border border-base-300/60 rounded-box w-56">
+            <% @generator.user_guide_urls.each_with_index do |url, index| %>
+              <li>
+                <%= link_to url,
+                      target: "_blank",
+                      rel: "noopener",
+                      title: url,
+                      class: "flex items-center justify-between gap-2" do %>
+                  <span><%= user_guide_link_label(url, index: index, total: @generator.user_guide_urls.length) %></span>
+                  <%= heroicon "arrow-top-right-on-square", variant: :outline, options: { class: "size-3.5 shrink-0 opacity-70" } %>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </details>
+      <% end %>
     </div>
 
     <div role="alert" class="alert bg-base-100 border border-primary/30 text-base-content shadow-sm">
@@ -19,11 +44,6 @@
       </svg>
 
       <p>Don't forget to install the <span class="font-semibold">zen</span> gem first with <code class="font-mono text-sm bg-base-300/50 text-accent px-1.5 py-0.5 rounded">gem install zcr-zen</code></p>
-
-      <!--TODO: implement the functionality of Don't show again so that users are not shown this whole alert container for installing the zen gem-->
-      <!--<div>
-        <button class="btn btn-sm">Don't Show Again</button>
-      </div>-->
     </div>
 
     <%= render "shared/command_clipboard" do %>

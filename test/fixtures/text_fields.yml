@@ -8,8 +8,5 @@
 #  updated_at    :datetime         not null
 #
 
-one:
-  default_value: MyString
-
-two:
-  default_value: MyString
+devise_model:
+  default_value: User

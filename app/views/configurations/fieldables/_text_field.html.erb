@@ -1,3 +1,12 @@
 <% should_hide_configuration_name ||= false %>
+<% flag_format = local_assigns[:flag_format] || "value" %>
 
-<input type="text" class="input w-full" data-generator-command-configuration-id-value="<%= configuration_key %>" data-generator-command-hide-configuration-name-value="<%= should_hide_configuration_name %>" data-action="input->generator-command#update" />
+<input
+  type="text"
+  class="input w-full"
+  placeholder="<%= local_assigns[:placeholder] %>"
+  value="<%= field.default_value if field.default_value.present? && !should_hide_configuration_name %>"
+  data-generator-command-configuration-id-value="<%= configuration_key %>"
+  data-generator-command-hide-configuration-name-value="<%= should_hide_configuration_name %>"
+  data-generator-command-flag-format-value="<%= flag_format %>"
+  data-action="input->generator-command#update" />

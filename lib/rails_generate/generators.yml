@@ -1,0 +1,43 @@
+model:
+  title: Model
+  description: Generate a model with optional migration, attributes, and ORM options.
+  command: rails generate model
+  prominent_options:
+    - migration
+    - parent
+    - database
+
+scaffold:
+  title: Scaffold
+  description: Scaffold a full REST resource from model through views and tests.
+  command: rails generate scaffold
+  prominent_options:
+    - api
+    - skip-routes
+    - migration
+    - parent
+
+controller:
+  title: Controller
+  description: Generate a controller, views, and tests with optional actions.
+  command: rails generate controller
+  prominent_options:
+    - skip-routes
+    - parent
+    - template-engine
+
+migration:
+  title: Migration
+  description: Generate a database migration with optional column definitions.
+  command: rails generate migration
+  prominent_options:
+    - timestamps
+    - database
+
+resource:
+  title: Resource
+  description: Generate a RESTful resource with model and controller (no views).
+  command: rails generate resource
+  prominent_options:
+    - skip-routes
+    - parent

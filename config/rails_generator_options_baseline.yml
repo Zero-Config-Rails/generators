@@ -1,0 +1,121 @@
+---
+rails_version: 8.1.3
+captured_at: '2026-06-10T10:19:29Z'
+sources:
+  rails_new:
+    option_keys:
+    - api
+    - css
+    - database
+    - dev
+    - devcontainer
+    - edge
+    - help
+    - javascript
+    - main
+    - minimal
+    - no-rc
+    - rc
+    - ruby
+    - skip-action-cable
+    - skip-action-mailbox
+    - skip-action-mailer
+    - skip-action-text
+    - skip-active-job
+    - skip-active-record
+    - skip-active-storage
+    - skip-asset-pipeline
+    - skip-bootsnap
+    - skip-brakeman
+    - skip-bundle
+    - skip-bundler-audit
+    - skip-ci
+    - skip-collision-check
+    - skip-decrypted-diffs
+    - skip-dev-gems
+    - skip-docker
+    - skip-git
+    - skip-hotwire
+    - skip-javascript
+    - skip-jbuilder
+    - skip-kamal
+    - skip-keeps
+    - skip-namespace
+    - skip-rubocop
+    - skip-solid
+    - skip-system-test
+    - skip-test
+    - skip-thruster
+    - template
+    - version
+  model:
+    option_keys:
+    - database
+    - fixture
+    - fixture-replacement
+    - force-plural
+    - indexes
+    - migration
+    - parent
+    - primary-key-type
+    - skip-collision-check
+    - skip-namespace
+    - test-framework
+    - timestamps
+  scaffold:
+    option_keys:
+    - api
+    - database
+    - fixture
+    - fixture-replacement
+    - force-plural
+    - helper
+    - indexes
+    - jbuilder
+    - migration
+    - model-name
+    - parent
+    - primary-key-type
+    - resource-route
+    - skip-collision-check
+    - skip-namespace
+    - skip-routes
+    - system-tests
+    - template-engine
+    - test-framework
+    - timestamps
+  controller:
+    option_keys:
+    - helper
+    - parent
+    - skip-collision-check
+    - skip-namespace
+    - skip-routes
+    - template-engine
+    - test-framework
+  migration:
+    option_keys:
+    - database
+    - primary-key-type
+    - skip-collision-check
+    - skip-namespace
+    - timestamps
+  resource:
+    option_keys:
+    - actions
+    - database
+    - fixture
+    - fixture-replacement
+    - force-plural
+    - helper
+    - indexes
+    - migration
+    - model-name
+    - parent
+    - primary-key-type
+    - skip-collision-check
+    - skip-namespace
+    - skip-routes
+    - template-engine
+    - test-framework
+    - timestamps

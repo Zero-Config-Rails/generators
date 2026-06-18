@@ -9,8 +9,8 @@
 
       <p class="text-lg md:text-xl text-primary-content/80 max-w-2xl mx-auto mb-10 leading-relaxed">
         Interactive configurators from
-        <a href="<%= NavigationHelper::ZCR_SITE_URL %>" class="hover:underline animate-gradient bg-gradient-to-r from-orange-700 via-blue-500 to-green-400 text-transparent bg-clip-text" target="_blank" rel="noopener">Zero Config Rails</a>.
-        Build <code class="text-sm bg-primary-content/10 px-1.5 py-0.5 rounded">rails new</code> commands, install gems with one line, and skip the manual wiring.
+        <a href="<%= NavigationHelper::ZCR_SITE_URL %>" class="font-semibold hover:underline animate-gradient bg-gradient-to-r from-orange-700 via-blue-500 to-green-400 text-transparent bg-clip-text" target="_blank" rel="noopener">Zero Config Rails</a>.
+        Build Rails generator commands, install gems with one line, and skip the manual wiring.
       </p>
 
       <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2.5 sm:gap-3 w-full sm:w-auto">
@@ -36,24 +36,25 @@
     </div>
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-      <% rails_tool = rails_app_generator_tool %>
-      <a href="<%= rails_tool[:path] %>" class="card bg-base-100 border border-base-300/60 shadow-sm hover:shadow-lg hover:shadow-accent/5 hover:border-accent/40 transition-all group">
-        <div class="card-body gap-4">
-          <div class="flex items-start justify-between gap-3">
-            <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-accent/15 text-accent shrink-0">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
+      <% rails_generator_tools.each do |tool| %>
+        <a href="<%= tool[:path] %>" class="card bg-base-100 border border-base-300/60 shadow-sm hover:shadow-lg hover:shadow-accent/5 hover:border-accent/40 transition-all group">
+          <div class="card-body gap-4">
+            <div class="flex items-start justify-between gap-3">
+              <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-accent/15 text-accent shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <span class="badge badge-outline badge-sm font-mono text-xs truncate max-w-[9rem]" title="<%= tool[:command] %>"><%= tool[:command] %></span>
             </div>
-            <span class="badge badge-outline badge-sm font-mono text-xs"><%= rails_tool[:command] %></span>
+            <div>
+              <h3 class="font-bold text-lg group-hover:text-accent transition-colors"><%= tool[:name] %></h3>
+              <p class="text-sm text-base-content/70 leading-relaxed mt-2 line-clamp-3"><%= tool[:description] %></p>
+            </div>
+            <span class="text-sm font-medium text-accent mt-auto">Open tool →</span>
           </div>
-          <div>
-            <h3 class="font-bold text-lg group-hover:text-accent transition-colors"><%= rails_tool[:name] %></h3>
-            <p class="text-sm text-base-content/70 leading-relaxed mt-2"><%= rails_tool[:description] %></p>
-          </div>
-          <span class="text-sm font-medium text-accent mt-auto">Open tool →</span>
-        </div>
-      </a>
+        </a>
+      <% end %>
 
       <% gem_installer_tools.each do |tool| %>
         <a href="<%= tool[:path] %>" class="card bg-base-100 border border-base-300/60 shadow-sm hover:shadow-lg hover:shadow-accent/5 hover:border-accent/40 transition-all group">
@@ -121,11 +122,11 @@
       <div class="card-body gap-6 p-8 md:p-12">
         <span class="badge badge-accent w-fit">The full product</span>
         <h2 class="text-2xl md:text-4xl font-bold leading-tight max-w-3xl">
-          Need the whole SaaS stack — not just one gem?
+          Need the whole SaaS stack - not just one gem?
         </h2>
         <p class="text-base-content/70 leading-relaxed max-w-3xl text-lg">
           Zero Config Rails compiles regression-tested Rails 8 apps with teams, Stripe billing, admin, and CI already wired.
-          Same integrated stack every time — you own the source.
+          Same integrated stack every time - you own the source.
         </p>
         <ul class="grid gap-3 text-sm text-base-content/80 sm:grid-cols-2 pt-2">
           <li class="flex gap-2.5 items-start">

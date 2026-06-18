@@ -1,0 +1,60 @@
+<%# locals: (compact: false) %>
+<li class="sticky top-0 z-10 bg-inherit px-2 py-2">
+  <label class="input input-sm input-bordered w-full flex items-center gap-2 bg-base-100">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+    </svg>
+    <input
+      type="search"
+      placeholder="Search tools…"
+      class="grow min-w-0"
+      autocomplete="off"
+      data-tools-search-target="input"
+      data-action="input->tools-search#filter"
+    />
+  </label>
+</li>
+
+<li data-tools-search-target="section">
+  <span class="menu-title text-xs uppercase tracking-wide">Rails generators</span>
+  <ul>
+    <% rails_generator_tools.each do |tool| %>
+      <li data-tools-search-target="item" data-tools-search-text-value="<%= [tool[:name], tool[:command], tool[:description]].compact.join(" ") %>">
+        <% if compact %>
+          <a href="<%= tool[:path] %>"><%= tool[:name] %></a>
+        <% else %>
+          <a href="<%= tool[:path] %>" class="flex flex-col items-start gap-0.5 py-2.5">
+            <span class="font-semibold"><%= tool[:name] %></span>
+            <% if tool[:description].present? %>
+              <span class="text-xs text-base-content/60 font-normal line-clamp-2"><%= tool[:description] %></span>
+            <% end %>
+          </a>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</li>
+
+<li data-tools-search-target="section">
+  <span class="menu-title text-xs uppercase tracking-wide mt-1">Gem installers</span>
+  <ul>
+    <% gem_installer_tools.each do |tool| %>
+      <li data-tools-search-target="item" data-tools-search-text-value="<%= [tool[:name], tool[:command], tool[:description]].compact.join(" ") %>">
+        <% if compact %>
+          <a href="<%= tool[:path] %>"><%= tool[:name] %></a>
+        <% else %>
+          <a href="<%= tool[:path] %>" class="flex flex-col items-start gap-0.5 py-2.5">
+            <span class="font-semibold"><%= tool[:name] %></span>
+            <% if tool[:description].present? %>
+              <span class="text-xs text-base-content/60 font-normal line-clamp-2"><%= tool[:description] %></span>
+            <% end %>
+          </a>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</li>
+
+<li data-tools-search-target="empty" class="hidden px-4 py-6 text-center text-sm text-base-content/60">
+  No tools match your search.
+</li>
