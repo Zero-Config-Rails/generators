@@ -16,9 +16,9 @@ Rails.application.routes.draw do
 
   get "/install/:identifier", to: "generators#show", as: :generators
 
-  resources :rails_generators, only: [] do
-    collection do
-      get :app
+  resources :rails_generators, only: [], param: :generator do
+    member do
+      get :show
     end
   end
 end

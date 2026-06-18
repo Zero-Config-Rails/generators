@@ -1,7 +1,11 @@
 <div class="grid gap-4 md:gap-8 md:grid-cols-2">
   <% configurations.each do |configuration| %>
-    <% if configuration.fieldable_name == "boolean_field" %>
+    <% fieldable_name = configuration_fieldable_name(configuration) %>
+
+    <% if fieldable_name == "boolean_field" %>
       <%= render "configurations/fieldables/boolean_field", field: configuration.fieldable, configuration: configuration %>
+    <% elsif fieldable_name == "list_field" %>
+      <%= render "configurations/fieldables/list_field", field: configuration.fieldable, configuration: configuration %>
     <% else %>
       <fieldset class="fieldset">
         <div class="flex justify-between mb-1">
@@ -25,7 +29,12 @@
           <% end %>
         </div>
 
-        <%= render "configurations/fieldables/#{configuration.fieldable_name}", field: configuration.fieldable, configuration_key: configuration.configuration_key, should_hide_configuration_name: configuration.try(:should_hide_configuration_name) %>
+        <%= render "configurations/fieldables/#{fieldable_name}",
+              field: configuration.fieldable,
+              configuration_key: configuration.configuration_key,
+              should_hide_configuration_name: configuration.try(:should_hide_configuration_name),
+              flag_format: configuration_flag_format(configuration),
+              placeholder: configuration.configuration_key == "name" ? name_placeholder(configuration) : nil %>
       </fieldset>
     <% end %>
   <% end %>

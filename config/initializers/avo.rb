@@ -80,11 +80,11 @@ Avo.configure do |config|
   # config.cache_resource_filters = -> { current_user.cache_resource_filters? }
 
   ## == Turbo options ==
-  # config.turbo = -> do
-  #   {
-  #     instant_click: true
-  #   }
-  # end
+  config.turbo = -> do
+    {
+      instant_click: false
+    }
+  end
 
   ## == Logger ==
   # config.logger = -> {

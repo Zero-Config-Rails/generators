@@ -15,28 +15,23 @@
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #
-# Indexes
-#
-#  index_generators_on_identifier  (identifier) UNIQUE
-#  index_generators_on_name        (name) UNIQUE
-#
 
-one:
-  identifier: $LABEL
-  name: $LABEL
-  short_description: MyString
-  description: MyText
-  git_url: MyString
+devise:
+  identifier: devise
+  name: Devise
+  short_description: Authentication for Rails
+  description: Flexible authentication solution for Rails
+  git_url: https://github.com/heartcombo/devise
   user_guide_urls: [https://example.com]
-  logo_url: MyString
-  invocation_command: MyString
+  invocation_command: devise
+  is_active: true
 
-two:
-  identifier: $LABEL
-  name: $LABEL
-  short_description: MyString
-  description: MyText
-  git_url: MyString
+annotate:
+  identifier: annotate
+  name: Annotate
+  short_description: Annotate models with schema info
+  description: Annotate Rails classes with schema and routes info
+  git_url: https://github.com/ctran/annotate_models
   user_guide_urls: [https://example.com]
-  logo_url: MyString
-  invocation_command: MyString
+  invocation_command: annotate
+  is_active: true

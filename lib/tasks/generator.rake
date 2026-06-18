@@ -26,7 +26,7 @@ namespace :generator do
           "Admin Panel Framework, Content Management System, and Internal Tool Builder",
         git_url: "https://github.com/avo-hq/avo",
         logo_url: "https://avatars.githubusercontent.com/u/66615189?s=48&v=4",
-        user_guide_urls: ["https://docs.avohq.io/3.0/installation.html"],
+        user_guide_urls: ["https://docs.avohq.io/4.0/installation.html"],
         invocation_command: "avo"
       },
       {

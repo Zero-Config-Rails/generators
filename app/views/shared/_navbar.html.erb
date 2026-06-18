@@ -1,28 +1,25 @@
 <div class="navbar bg-primary text-primary-content shadow-lg sticky top-0 z-50 min-h-14 px-4 md:px-8">
   <div class="navbar-start flex-1 min-w-0 gap-0">
-    <div class="dropdown lg:hidden shrink-0">
-      <label tabindex="0" class="btn btn-ghost btn-square text-primary-content" aria-label="Open menu">
+    <details class="dropdown lg:hidden shrink-0" data-controller="dropdown-menu" data-action="click@window->dropdown-menu#close">
+      <summary class="btn btn-ghost btn-square text-primary-content list-none cursor-pointer" aria-label="Open menu">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
-      </label>
-      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-primary rounded-box w-64 max-h-[70vh] overflow-y-auto">
+      </summary>
+      <ul class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 text-base-content border border-base-300/60 rounded-box w-72 max-h-[70vh] overflow-y-auto">
         <li><a href="<%= root_path %>" class="<%= current_page?(root_path) ? "active" : "" %>">Home</a></li>
         <li>
-          <details>
+          <details data-controller="dropdown-menu" data-action="click@window->dropdown-menu#close">
             <summary>Tools</summary>
-            <ul>
-              <li><a href="<%= app_rails_generators_path %>">Rails App Generator</a></li>
-              <% gem_installer_tools.each do |tool| %>
-                <li><a href="<%= tool[:path] %>"><%= tool[:name] %></a></li>
-              <% end %>
+            <ul class="p-0 max-h-[50vh] overflow-y-auto" data-controller="tools-search">
+              <%= render "shared/tools_menu", compact: true %>
             </ul>
           </details>
         </li>
         <li><a href="<%= NavigationHelper::ZCR_SITE_URL %>/pricing">Pricing</a></li>
         <li><a href="<%= NavigationHelper::ZCR_APP_URL %>" class="btn btn-accent btn-sm mt-2">Dashboard</a></li>
       </ul>
-    </div>
+    </details>
 
     <a href="<%= root_path %>" class="btn btn-ghost normal-case min-w-0 flex-1 justify-start gap-2 px-1 sm:px-2 h-auto py-2 text-primary-content hover:bg-primary-content/10">
       <%= image_tag "logo-white-bg.png", alt: "Zero Config Rails", width: 32, height: 32, class: "size-8 shrink-0 rounded-lg" %>
@@ -33,27 +30,16 @@
     </a>
   </div>
 
-  <div class="navbar-center hidden lg:flex">
+  <div class="navbar-center hidden lg:flex flex-none">
     <ul class="menu menu-horizontal px-1 gap-1">
       <li>
         <a href="<%= root_path %>" class="text-primary-content hover:bg-primary-content/10 <%= "bg-primary-content/10" if current_page?(root_path) %>">Home</a>
       </li>
       <li>
-        <details>
+        <details data-controller="dropdown-menu" data-action="click@window->dropdown-menu#close">
           <summary class="text-primary-content hover:bg-primary-content/10">Tools</summary>
-          <ul class="z-[1] p-2 shadow-2xl bg-base-100 text-base-content border border-base-300/60 rounded-box w-72 max-h-[70vh] overflow-y-auto">
-            <li>
-              <a href="<%= app_rails_generators_path %>" class="flex flex-col items-start gap-0.5 py-3">
-                <span class="font-semibold">Rails App Generator</span>
-                <span class="text-xs text-base-content/60 font-normal">Configure rails new flags visually</span>
-              </a>
-            </li>
-            <li class="menu-title text-xs uppercase tracking-wide mt-1">Gem installers</li>
-            <% gem_installer_tools.each do |tool| %>
-              <li>
-                <a href="<%= tool[:path] %>"><%= tool[:name] %></a>
-              </li>
-            <% end %>
+          <ul class="z-[1] p-2 shadow-2xl bg-base-100 text-base-content border border-base-300/60 rounded-box w-80 max-h-[70vh] overflow-y-auto" data-controller="tools-search">
+            <%= render "shared/tools_menu", compact: false %>
           </ul>
         </details>
       </li>
@@ -63,7 +49,7 @@
     </ul>
   </div>
 
-  <div class="navbar-end shrink-0 gap-2 pl-1">
+  <div class="navbar-end flex-1 justify-end shrink-0 gap-2 pl-1">
     <a href="<%= NavigationHelper::ZCR_SITE_URL %>" class="btn btn-accent btn-xs px-2.5 sm:btn-sm sm:px-4 sm:hidden whitespace-nowrap" target="_blank" rel="noopener">Dashboard</a>
     <a href="<%= NavigationHelper::ZCR_SITE_URL %>" class="btn btn-accent btn-sm hidden sm:inline-flex whitespace-nowrap" target="_blank" rel="noopener">Go to Dashboard</a>
   </div>

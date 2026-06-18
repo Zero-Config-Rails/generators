@@ -1,6 +1,6 @@
 # Generators - By [Zero Config Rails](https://zeroconfigrails.com/)
 
-[![Ruby](https://img.shields.io/badge/Ruby-3.2+-red.svg)](https://www.ruby-lang.org/)
+[![Ruby](https://img.shields.io/badge/Ruby-4.0+-red.svg)](https://www.ruby-lang.org/)
 [![Rails](https://img.shields.io/badge/Rails-8.0+-red.svg)](https://rubyonrails.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -8,7 +8,7 @@
 
 ## Requirements
 
-- Ruby 3.4.5
+- Ruby 4.0.5
 - Rails 8.0
 - PostgreSQL
 - Node.js 20.15.1 and Yarn

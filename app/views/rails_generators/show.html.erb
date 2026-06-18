@@ -1,0 +1,42 @@
+<% meta = rails_generator_meta(@generator_id) %>
+<% required_configurations = rails_generator_required_configurations(@generator_id) %>
+<% optional_configurations = rails_generator_optional_configurations(@generator_id) %>
+<% flag_configurations = required_configurations + optional_configurations %>
+<% positional_keys = %w[name columns actions] %>
+
+<div class="container mx-auto p-4">
+  <div class="grid gap-4" data-controller="generator-command">
+    <% if @generator_id == "app" %>
+      <h2 class="font-bold text-3xl"><%= meta["title"] %></h2>
+    <% else %>
+      <h2 class="font-bold text-3xl"><%= meta["title"] %> Generator</h2>
+      <p class="text-base-content/70"><%= meta["description"] %></p>
+    <% end %>
+
+    <%= render "shared/command_clipboard", configurations: flag_configurations do %>
+      <% if @generator_id == "app" %>
+        rails new<span id="application_name"> <APP_NAME></span><%= safe_join(configuration_options(flag_configurations)) %>
+      <% else %>
+        <%= meta["command"] %><% positional_keys.each do |key| %><span id="<%= key %>" hidden></span><% end %><%= safe_join(configuration_options(flag_configurations)) %>
+      <% end %>
+    <% end %>
+
+    <%= render "generators/configurations", configurations: required_configurations %>
+
+    <% if optional_configurations.any? %>
+      <div data-controller="visibility-toggler" data-action="visibility-toggler#hide">
+        <div class="flex items-center gap-2 py-4">
+          <input type="checkbox" id="show-optional-options" class="checkbox" data-action="change->visibility-toggler#change">
+          <label for="show-optional-options" class="label cursor-pointer">
+            <span class="label-text">Show all configurations</span>
+          </label>
+        </div>
+
+        <div class="hidden md:grid-cols-2" data-visibility-toggler-target="container">
+          <div class="divider">Optional configurations</div>
+          <%= render "generators/configurations", configurations: optional_configurations %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

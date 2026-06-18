@@ -1,0 +1,57 @@
+<% options = field.options %>
+<% row_layout = options[:row_layout] || "flex gap-2 items-center" %>
+
+<div
+  data-controller="list-field"
+  data-list-field-output-id-value="<%= options[:output_id] %>"
+  data-list-field-format-value="<%= options[:format] %>">
+  <div class="flex items-center justify-between mb-2">
+    <label class="label text-sm"><%= configuration_title(configuration) %></label>
+    <button type="button" class="btn btn-sm btn-outline" data-action="list-field#add"><%= options[:add_label] %></button>
+  </div>
+
+  <div data-list-field-target="container" class="grid gap-2">
+    <div data-list-field-target="row" class="<%= row_layout %>">
+      <% options[:row].each do |cell| %>
+        <% column_class = cell[:column_class] %>
+        <% show_for_types = cell[:show_for_types] %>
+
+        <div
+          class="<%= column_class %><%= " hidden" if show_for_types %>"
+          <% if show_for_types %>data-list-field-cell data-list-field-show-for-types="<%= show_for_types.to_json %>"<% end %>>
+
+          <% if cell[:control] == "text" %>
+            <input
+              type="text"
+              placeholder="<%= cell[:placeholder] %>"
+              class="input input-sm w-full"
+              data-list-field-key="<%= cell[:key] %>"
+              <% if cell[:placeholders] %>data-list-field-placeholders="<%= cell[:placeholders].merge(default: cell[:placeholder]).to_json %>"<% end %>
+              data-action="input->list-field#refresh">
+          <% elsif cell[:control] == "select" %>
+            <select
+              class="select select-sm w-full"
+              data-list-field-key="<%= cell[:key] %>"
+              data-action="change->list-field#<%= cell[:key] == "type" ? "typeChanged" : "refresh" %>">
+              <% cell[:values].each do |value| %>
+                <% label = cell.dig(:labels, value) || value.presence || cell.dig(:labels, "") %>
+
+                <option value="<%= value %>"><%= label %></option>
+              <% end %>
+            </select>
+          <% elsif cell[:control] == "checkbox" %>
+            <label class="label cursor-pointer gap-1 py-0">
+              <input
+                type="checkbox"
+                class="checkbox checkbox-sm"
+                data-list-field-key="<%= cell[:key] %>"
+                data-action="change->list-field#refresh">
+              <span class="label-text text-xs"><%= cell[:label] %></span>
+            </label>
+          <% end %>
+        </div>
+      <% end %>
+      <button type="button" class="btn btn-sm btn-ghost col-span-1" data-action="list-field#remove">×</button>
+    </div>
+  </div>
+</div>
