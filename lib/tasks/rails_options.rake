@@ -1,10 +1,10 @@
 namespace :rails_options do
-  desc "Capture current vanilla Rails generator options into baseline YAML"
+  desc "Capture generator options from the app's Rails version into baseline YAML"
   task baseline: :environment do
     RailsGenerate::OptionsSnapshot.write_baseline!
   end
 
-  desc "Check for drift between baseline and current vanilla Rails generator options"
+  desc "Compare current Rails generator options against the committed baseline"
   task check: :environment do
     success = RailsGenerate::OptionsSnapshot.check!
 

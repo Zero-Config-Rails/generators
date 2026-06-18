@@ -6,7 +6,7 @@ namespace :rails_generate do
     abort "Unknown generator: #{generator}" unless RailsGenerate::Registry.all_ids.include?(generator)
 
   meta = RailsGenerate::Registry.meta(generator)
-  help = RailsGenerate::VanillaRailsApp.generate_help(generator)
+  help = RailsGenerate::OptionsSnapshot.generate_help(generator)
   configurations = RailsGenerate::HelpParser.new(help).parse_configurations
 
   RailsGenerate::ConfigurationWriter.new(
@@ -18,18 +18,16 @@ namespace :rails_generate do
 
   desc "Parse all in-scope rails generate helpers"
   task parse_all: :environment do
-    RailsGenerate::VanillaRailsApp.with_app do |app_dir|
-      RailsGenerate::Registry.all_ids.each do |generator|
-        meta = RailsGenerate::Registry.meta(generator)
-        help = RailsGenerate::VanillaRailsApp.generate_help_in_app(app_dir, generator)
-        configurations = RailsGenerate::HelpParser.new(help).parse_configurations
+    RailsGenerate::Registry.all_ids.each do |generator|
+      meta = RailsGenerate::Registry.meta(generator)
+      help = RailsGenerate::OptionsSnapshot.generate_help(generator)
+      configurations = RailsGenerate::HelpParser.new(help).parse_configurations
 
-        RailsGenerate::ConfigurationWriter.new(
-          generator_id: generator,
-          configurations: configurations,
-          command: meta["command"]
-        ).write!
-      end
+      RailsGenerate::ConfigurationWriter.new(
+        generator_id: generator,
+        configurations: configurations,
+        command: meta["command"]
+      ).write!
     end
   end
 end

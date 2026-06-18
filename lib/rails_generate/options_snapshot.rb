@@ -1,3 +1,5 @@
+require "open3"
+
 module RailsGenerate
   class OptionsSnapshot
     BASELINE_PATH = Rails.root.join("config/rails_generator_options_baseline.yml")
@@ -11,19 +13,22 @@ module RailsGenerate
     }.freeze
 
     class << self
-      def capture
+      def rails_new_help
+        run_command("bin/rails", "new", "--help")
+      end
+
+      def generate_help(generator_name)
+        run_command("bin/rails", "generate", generator_name, "--help")
+      end
+
+      def capture_snapshot
         sources = { "rails_new" => capture_rails_new }
-        rails_version = nil
 
-        VanillaRailsApp.with_app do |app_dir|
-          rails_version = VanillaRailsApp.capture_in_app(app_dir, "bin/rails", "--version").match(/Rails (\S+)/)&.captures&.first
+        SOURCES.each do |source, config|
+          next if config[:type] == :rails_new
 
-          SOURCES.each do |source, config|
-            next if config[:type] == :rails_new
-
-            help = VanillaRailsApp.capture_in_app(app_dir, "bin/rails", "generate", config[:name], "--help")
-            sources[source] = { "option_keys" => HelpParser.new(help).option_keys.sort }
-          end
+          help = generate_help(config[:name])
+          sources[source] = { "option_keys" => HelpParser.new(help).option_keys.sort }
         end
 
         {
@@ -34,21 +39,34 @@ module RailsGenerate
       end
 
       def write_baseline!
-        File.write(BASELINE_PATH, capture.to_yaml)
-        puts "Wrote baseline to #{BASELINE_PATH}"
+        snapshot = capture_snapshot
+        File.write(BASELINE_PATH, snapshot.to_yaml)
+        puts "Wrote baseline to #{BASELINE_PATH} (Rails #{snapshot['rails_version']})"
       end
 
       def check!
         baseline = YAML.safe_load_file(BASELINE_PATH)
-        current = capture
+        current = capture_snapshot
+        baseline_version = baseline["rails_version"]
+        current_version = current["rails_version"]
         drift = compare(baseline, current)
 
+        if baseline_version != current_version
+          puts "Rails version changed: #{baseline_version} -> #{current_version}"
+        else
+          puts "Checking against baseline (Rails #{baseline_version})"
+        end
+
         if drift.empty?
-          puts "Rails generator options match baseline (Rails #{current['rails_version']})."
+          if baseline_version != current_version
+            puts "Generator options unchanged. Run `rake rails_options:baseline` to record Rails #{current_version}."
+          else
+            puts "Rails generator options match baseline."
+          end
           return true
         end
 
-        puts "Rails generator options drift detected (Rails #{current['rails_version']}):"
+        puts "Rails generator options drift detected (Rails #{current_version}):"
         drift.each do |source, changes|
           puts "  #{source}:"
           puts "    added: #{changes[:added].join(', ')}" if changes[:added].any?
@@ -60,14 +78,27 @@ module RailsGenerate
 
       def drift_report
         baseline = YAML.safe_load_file(BASELINE_PATH)
-        current = capture
+        current = capture_snapshot
         compare(baseline, current)
       end
 
       private
 
+      def rails_version
+        run_command("bin/rails", "--version").match(/Rails (\S+)/)&.captures&.first
+      end
+
+      def run_command(*cmd)
+        stdout, stderr, status = Open3.capture3(*cmd, chdir: Rails.root)
+        unless status.success?
+          raise "Command failed (#{cmd.join(" ")}): #{stderr}"
+        end
+
+        stdout
+      end
+
       def capture_rails_new
-        { "option_keys" => HelpParser.new(VanillaRailsApp.rails_new_help).option_keys.sort }
+        { "option_keys" => HelpParser.new(rails_new_help).option_keys.sort }
       end
 
       def compare(baseline, current)
