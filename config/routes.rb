@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "welcome#index"
+  get "index.md", to: "welcome#index", defaults: { format: :md }
 
   get "/install/:identifier", to: "generators#show", as: :generators
 

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Hatchbox post-deploy hook — publish static SEO files after each deploy.
+# In Hatchbox: App → Edit → Post-deploy script → bin/post_deploy
+#
+# Hatchbox sets RELEASE_DIR; fall back to repo root for local runs.
+APP_ROOT="${RELEASE_DIR:-$(cd "$(dirname "$0")/.." && pwd)}"
+cd "$APP_ROOT"
+
+bundle exec rails seo:publish
