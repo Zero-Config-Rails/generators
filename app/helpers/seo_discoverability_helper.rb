@@ -1,4 +1,8 @@
 module SeoDiscoverabilityHelper
+  VISUALLY_HIDDEN_STYLE =
+    "position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;" \
+    "clip:rect(0,0,0,0);white-space:nowrap;border:0;"
+
   def seo_canonical_url
     SeoDiscoverability::Site.absolute(request.path)
   end
@@ -43,6 +47,7 @@ module SeoDiscoverabilityHelper
       :div,
       "A Markdown version of this page is available at #{seo_markdown_url}.",
       class: "visually-hidden",
+      style: VISUALLY_HIDDEN_STYLE,
       aria: { hidden: "true" }
     )
   end

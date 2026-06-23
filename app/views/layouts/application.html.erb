@@ -15,7 +15,6 @@
       <link rel="canonical" href="<%= seo_canonical_url %>">
       <%= seo_markdown_alternate_tag %>
       <%= seo_json_ld %>
-      <%= seo_markdown_pointer %>
     <% end %>
 
     <link rel="manifest" href="/manifest.json">
@@ -49,5 +48,6 @@
     </main>
 
     <%= render partial: "shared/footer" %>
+    <%= seo_markdown_pointer %>
   </body>
 </html>
