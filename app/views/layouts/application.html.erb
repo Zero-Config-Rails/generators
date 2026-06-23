@@ -11,6 +11,13 @@
 
     <%= yield :head %>
 
+    <% if seo_page_indexable? %>
+      <link rel="canonical" href="<%= seo_canonical_url %>">
+      <%= seo_markdown_alternate_tag %>
+      <%= seo_json_ld %>
+      <%= seo_markdown_pointer %>
+    <% end %>
+
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
@@ -29,6 +36,7 @@
     <meta name="twitter:card" content="summary_large_image">
 
     <meta property="og:title" content="Zero Config Rails Generators - Free Rails Developer Tools">
+    <meta property="og:url" content="<%= seo_canonical_url %>">
     <meta property="og:image" content="<%= image_url('/meta/cover.png') %>">
     <meta property="og:description" content="Free interactive tools for Rails teams - configure rails new, install gems with a single command, and skip the setup sprint.">
   </head>

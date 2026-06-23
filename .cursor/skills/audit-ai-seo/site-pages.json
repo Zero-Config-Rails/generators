@@ -1,0 +1,8 @@
+{
+  "html_paths": ["/"],
+  "section_indexes": [],
+  "check_llms_full_txt": true,
+  "require_feed": false,
+  "require_json_ld": true,
+  "require_markdown_negotiation": true
+}

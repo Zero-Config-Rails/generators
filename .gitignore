@@ -30,6 +30,10 @@
 !/tmp/storage/.keep
 
 /public/assets
+# SEO files - these are generated during each deploy
+/public/sitemap.xml
+/public/llms.txt
+/public/llms-full.txt
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
