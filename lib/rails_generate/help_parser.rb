@@ -4,6 +4,7 @@ module RailsGenerate
   class HelpParser
     GEM_INJECTED_OPTIONS = %w[avo-resource].freeze
     IGNORED_OPTIONS = %w[name].freeze
+    OPTIONS_WITHOUT_MACHINE_DEFAULT = %w[ruby].freeze
     SECTION_HEADER = /\A(.+ )?options:\z/i
     STOP_SECTIONS = /\A(Description|Examples|Runtime options|Available field types):/i
 
@@ -89,6 +90,7 @@ module RailsGenerate
       return nil if gem_injected?(canonical_key)
 
       default_value = extract_default_value(description)
+      default_value = nil if machine_local_default?(canonical_key, default_value)
       field_type = determine_field_type(canonical_key, description, option_names)
       flag_format, negative_prefix = determine_flag_format(canonical_key, option_names, default_value, field_type)
 
@@ -160,6 +162,13 @@ module RailsGenerate
     def extract_default_value(description)
       match = description.match(/Default:\s*([^\s,#]+)/)
       match ? match[1] : nil
+    end
+
+    def machine_local_default?(key, value)
+      return false if value.blank?
+
+      OPTIONS_WITHOUT_MACHINE_DEFAULT.include?(key) ||
+        (value.start_with?("/") && value.end_with?("/ruby"))
     end
 
     def extract_dropdown_options(description)
