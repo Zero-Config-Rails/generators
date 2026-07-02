@@ -13,14 +13,9 @@
         Build Rails generator commands, install gems with one line, and skip the manual wiring.
       </p>
 
-      <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2.5 sm:gap-3 w-full sm:w-auto">
-        <a href="#tools" class="btn btn-accent btn-md sm:btn-lg px-8 sm:px-10 min-h-12 sm:min-h-14 text-sm sm:text-base font-semibold">
-          Browse tools
-        </a>
-        <a href="<%= NavigationHelper::ZCR_APP_URL %>" class="btn btn-md sm:btn-lg min-h-12 sm:min-h-14 px-8 sm:px-10 text-sm sm:text-base font-semibold bg-transparent border-2 border-primary-content/25 text-primary-content hover:bg-primary-content/10 hover:border-primary-content/40" target="_blank" rel="noopener">
-          Get the full SaaS compiler
-        </a>
-      </div>
+      <a href="#tools" class="btn btn-accent btn-md sm:btn-lg px-8 sm:px-10 min-h-12 sm:min-h-14 text-sm sm:text-base font-semibold">
+        Browse tools
+      </a>
     </div>
   </div>
 </section>
@@ -31,7 +26,7 @@
       <p class="text-sm font-semibold uppercase tracking-wider text-accent mb-3">Available now</p>
       <h2 class="text-3xl md:text-4xl font-bold text-base-content mb-4">Every tool in one place</h2>
       <p class="text-base-content/70 max-w-2xl mx-auto leading-relaxed">
-        Pick a configurator, tune the options, copy the command. No account required for these tools.
+        Pick a configurator, tune the options, copy the command.
       </p>
     </div>
 
@@ -61,8 +56,8 @@
           <div class="card-body gap-4">
             <div class="flex items-start justify-between gap-3">
               <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-accent/10 text-accent shrink-0">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M7 4h10l3 4.5-8 9.5-8-9.5L7 4z" />
                 </svg>
               </div>
               <span class="badge badge-outline badge-sm font-mono text-xs truncate max-w-[9rem]" title="<%= tool[:command] %>"><%= tool[:command] %></span>

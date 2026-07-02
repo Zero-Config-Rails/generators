@@ -22,7 +22,7 @@ class SeoDiscoverabilityTest < ActionDispatch::IntegrationTest
     get "/index.md"
     assert_response :success
     assert_includes response.media_type, "markdown"
-    assert_includes response.body, "# Zero Config Rails Generators"
+    assert_includes response.body, "# Zero Config Rails Tools"
     assert_match(/rel="alternate".*text\/html/i, response.headers["Link"].to_s)
   end
 

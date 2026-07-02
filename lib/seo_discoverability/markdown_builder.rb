@@ -78,9 +78,9 @@ module SeoDiscoverability
 
           #{gem_tools.join("\n")}
 
-          ## Full product
+          ## About Zero Config Rails
 
-          [Zero Config Rails](#{NavigationHelper::ZCR_APP_URL}) compiles regression-tested Rails 8 SaaS apps with teams, Stripe billing, admin, and CI already wired.
+          These tools are built by [Zero Config Rails](#{NavigationHelper::ZCR_SITE_URL}). For a compiled Rails app, see the [dashboard](#{NavigationHelper::ZCR_APP_URL}) or [pricing](#{NavigationHelper::ZCR_SITE_URL}/pricing).
         MARKDOWN
       end
 

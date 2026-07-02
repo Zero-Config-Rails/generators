@@ -3,7 +3,7 @@ module NavigationHelper
 
   ZCR_SITE_URL = "https://zeroconfigrails.com"
   ZCR_APP_URL = "https://app.zeroconfigrails.com"
-  ZCR_TAGLINE = "The multi-flavor SaaS starter kit for modern Rails teams"
+  ZCR_TAGLINE = "Free interactive tools for Rails developers - configure generators and install gems without the setup sprint."
 
   def rails_generator_tools
     RailsGenerators::ConfigurationsHelper::GENERATOR_IDS.map do |id|

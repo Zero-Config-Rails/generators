@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="zcr">
   <head>
-    <title><%= content_for(:title) || "Zero Config Rails Generators - Free Rails Developer Tools" %></title>
+    <title><%= content_for(:title) || "Zero Config Rails Tools - Free Rails Developer Tools" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-prefetch" content="false">
     <meta name="mobile-web-app-capable" content="yes">
@@ -25,19 +25,19 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
 
-    <meta name="keywords" content="rails generator, zero config rails, rails new generator, gem installer, boring generators, rails saas starter">
-    <meta name="title" content="Zero Config Rails Generators - Free Rails Developer Tools">
-    <meta name="description" content="Free interactive tools for Rails teams - configure rails new, install gems with a single command, and skip the setup sprint. From the makers of Zero Config Rails.">
+    <meta name="keywords" content="rails generator, rails new generator, gem installer, boring generators, rails developer tools, zen gem, zero config rails, zero config rails tools, zero config rails generators">
+    <meta name="title" content="Zero Config Rails Tools - Free Rails Developer Tools">
+    <meta name="description" content="<%= SeoDiscoverability::Site::DESCRIPTION %>">
 
-    <meta name="twitter:title" content="Zero Config Rails Generators - Free Rails Developer Tools">
-    <meta name="twitter:description" content="Free interactive tools for Rails teams - configure rails new, install gems with a single command, and skip the setup sprint.">
+    <meta name="twitter:title" content="Zero Config Rails Tools - Free Rails Developer Tools">
+    <meta name="twitter:description" content="<%= SeoDiscoverability::Site::DESCRIPTION %>">
     <meta name="twitter:image" content="<%= image_url('/meta/cover.png') %>">
     <meta name="twitter:card" content="summary_large_image">
 
-    <meta property="og:title" content="Zero Config Rails Generators - Free Rails Developer Tools">
+    <meta property="og:title" content="Zero Config Rails Tools - Free Rails Developer Tools">
     <meta property="og:url" content="<%= seo_canonical_url %>">
     <meta property="og:image" content="<%= image_url('/meta/cover.png') %>">
-    <meta property="og:description" content="Free interactive tools for Rails teams - configure rails new, install gems with a single command, and skip the setup sprint.">
+    <meta property="og:description" content="<%= SeoDiscoverability::Site::DESCRIPTION %>">
   </head>
 
   <body class="min-h-screen bg-base-200 text-base-content flex flex-col antialiased">
