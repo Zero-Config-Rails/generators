@@ -19,11 +19,13 @@
     --color-primary-content: #f8fafc;
     --color-secondary: #334155;
     --color-secondary-content: #f1f5f9;
-    --color-accent: #0ea5e9;
-    --color-accent-content: #f0f9ff;
+    --color-accent: #0473fa;
+    --color-accent-content: #ffffff;
+    --color-accent-link: #6bb8ff;
+    --color-accent-fill: #046fec;
     --color-neutral: #475569;
     --color-neutral-content: #f8fafc;
-    --color-info: #38bdf8;
+    --color-info: #6bb8ff;
     --color-info-content: #082f49;
     --color-success: #22c55e;
     --color-success-content: #052e16;
@@ -31,6 +33,22 @@
     --color-warning-content: #451a03;
     --color-error: #ef4444;
     --color-error-content: #450a0a;
+  }
+}
+
+@layer components {
+  /* Filled accent controls: slightly deeper blue so white label text hits 4.5:1. */
+  .btn-accent,
+  .badge-accent {
+    background-color: var(--color-accent-fill);
+    border-color: var(--color-accent-fill);
+    color: var(--color-accent-content);
+  }
+
+  .btn-accent:hover,
+  .badge-accent:hover {
+    background-color: #0458d6;
+    border-color: #0458d6;
   }
 }
 
@@ -93,4 +111,18 @@
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+@layer utilities {
+  /* Brand blue for text/icons on dark surfaces needs a lighter tint for WCAG AA. */
+  .text-accent,
+  .link-accent,
+  a.link.link-accent,
+  .group-hover\:text-accent {
+    color: var(--color-accent-link);
+  }
+
+  .group:hover .group-hover\:text-accent {
+    color: var(--color-accent-link);
+  }
 }
